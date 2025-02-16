@@ -43,17 +43,13 @@
         <!-- نموذج لإرسال رسالة -->
         <form id="email-form" action="mailto:asfawaz6071@gmail.com" method="post" enctype="text/plain" onsubmit="showSuccessMessage()">
             
-            <!-- حقل اختيار البريد الإلكتروني -->
-            <label for="email">اختار البريد الإلكتروني:</label><br>
-            <select id="email" name="email">
-                <option value="asfawaz6071@gmail.com">asfawaz6071@gmail.com</option>
-                <option value="example1@gmail.com">example1@gmail.com</option>
-                <option value="example2@gmail.com">example2@gmail.com</option>
-            </select><br><br>
+            <!-- حقل إدخال البريد الإلكتروني -->
+            <label for="email">أدخل البريد الإلكتروني الذي تريد إرسال الرسالة إليه:</label><br>
+            <input type="email" id="email" name="email" placeholder="اكتب البريد الإلكتروني" required><br><br>
 
             <!-- حقل الرسالة -->
             <label for="message">أرسل رسالة:</label><br>
-            <textarea id="message" name="message" rows="4" cols="50" placeholder="اكتب رسالتك هنا..."></textarea><br><br>
+            <textarea id="message" name="message" rows="4" cols="50" placeholder="اكتب رسالتك هنا..." required></textarea><br><br>
             
             <!-- زر الإرسال -->
             <input type="submit" value="إرسال" />
@@ -79,8 +75,8 @@
         form.onsubmit = function (event) {
             event.preventDefault(); // منع الإرسال العادي للنموذج
 
-            // الحصول على البريد الإلكتروني المختار
-            const selectedEmail = document.getElementById('email').value;
+            // الحصول على البريد الإلكتروني المدخل
+            const recipientEmail = document.getElementById('email').value;
 
             // الحصول على قيمة الرسالة المدخلة
             let message = document.getElementById('message').value;
@@ -89,7 +85,7 @@
             let encodedMessage = encodeURIComponent(message);
 
             // بناء رابط الـ mailto مع الرسالة والبريد الإلكتروني
-            let mailtoLink = "mailto:" + selectedEmail + "?subject=رسالة من الموقع&body=" + encodedMessage;
+            let mailtoLink = "mailto:" + recipientEmail + "?subject=رسالة من الموقع&body=" + encodedMessage;
 
             // فتح الرابط لإرسال الرسالة عبر البريد الإلكتروني
             window.location.href = mailtoLink;
