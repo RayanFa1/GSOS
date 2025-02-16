@@ -4,29 +4,42 @@ body {
     padding: 0;
     background-color: #000;
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
     text-align: center;
 }
 
 header {
     background-color: #111;
     padding: 20px;
+    width: 100%;
 }
 
 .features {
-    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    max-width: 600px;
+    margin: 20px 0;
 }
 
 .feature {
     background-color: #222;
     padding: 15px;
-    margin: 10px auto;
+    margin: 10px 0;
     border-radius: 5px;
-    width: 80%;
-    max-width: 500px;
+    width: 100%;
 }
 
 footer {
     background-color: #111;
     padding: 10px;
-    margin-top: 20px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
 }
