@@ -8,11 +8,6 @@ body {
     position: relative;
 }
 
-/* إلغاء الخلفية المتحركة */
-body::before {
-    content: none; /* حذف الخلفية المتحركة */
-}
-
 /* رأس الصفحة */
 header {
     background-color: #D1B28C; /* اللون البني الفاتح */
