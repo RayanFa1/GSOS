@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نظام المراسلة | GSOS</title>
+    <title>Global Smart Operating System | GSOS</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,50 +19,12 @@
             padding: 15px 0;
         }
 
-        #messageForm {
+        .content {
             margin: 20px;
             padding: 15px;
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        #messageForm input, #messageForm textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        #messageForm button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        #messageForm button:hover {
-            background-color: #45a049;
-        }
-
-        #messages {
-            margin: 20px;
-            padding: 10px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .message {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .message:last-child {
-            border-bottom: none;
         }
 
         footer {
@@ -74,69 +36,34 @@
             width: 100%;
             bottom: 0;
         }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>نظام المراسلة | GSOS</h1>
+        <h1>Global Smart Operating System | GSOS</h1>
     </header>
 
-    <div id="messageForm">
-        <h2>إرسال رسالة</h2>
-        <form id="messageForm">
-            <input type="text" id="sender" name="sender" placeholder="اسم المرسل" required>
-            <input type="text" id="recipient" name="recipient" placeholder="اسم المستقبل" required>
-            <textarea id="message" name="message" placeholder="اكتب رسالتك" required></textarea>
-            <button type="submit">إرسال الرسالة</button>
-        </form>
-        <div id="statusMessage"></div>
-    </div>
-
-    <div id="messages">
-        <h2>الرسائل المستلمة</h2>
-        <div id="messageList"></div>
+    <div class="content">
+        <h2>Welcome to GSOS</h2>
+        <p>Explore the flexibility and advanced tools provided by our system, designed to make your daily tasks easier and more efficient.</p>
+        <a href="#" class="button">Get Started</a>
     </div>
 
     <footer>
         <p>Made in Saudi</p>
     </footer>
-
-    <script>
-        // إرسال الرسالة عبر Ajax
-        document.getElementById("messageForm").addEventListener("submit", function(e) {
-            e.preventDefault();
-
-            var formData = new FormData();
-            formData.append("sender", document.getElementById("sender").value);
-            formData.append("recipient", document.getElementById("recipient").value);
-            formData.append("message", document.getElementById("message").value);
-
-            fetch("send_message.php", {
-                method: "POST",
-                body: formData
-            }).then(response => response.text())
-            .then(data => {
-                document.getElementById("statusMessage").innerText = data;
-                loadMessages(); // تحميل الرسائل الجديدة
-            });
-        });
-
-        // تحميل الرسائل عند تحميل الصفحة
-        function loadMessages() {
-            var user = document.getElementById("recipient").value;
-
-            fetch(`get_messages.php?user=${user}`)
-            .then(response => response.json())
-            .then(messages => {
-                var messageList = document.getElementById("messageList");
-                messageList.innerHTML = "";  // إفراغ الرسائل القديمة
-                messages.forEach(message => {
-                    messageList.innerHTML += `<div class="message"><strong>${message.sender}</strong>: ${message.message}</div>`;
-                });
-            });
-        }
-
-        window.onload = loadMessages;
-    </script>
 </body>
 </html>
