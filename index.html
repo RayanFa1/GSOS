@@ -5,8 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Global Smart Operating System</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* إشعار النجاح */
+        #success-message {
+            display: none;
+            background-color: #4CAF50; /* اللون الأخضر */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            font-size: 18px;
+            z-index: 1000;
+        }
+    </style>
 </head>
 <body>
+
+    <!-- إشعار النجاح -->
+    <div id="success-message">تم إرسال الرسالة بنجاح!</div>
 
     <!-- رأس الصفحة -->
     <header>
@@ -23,7 +41,7 @@
         <p>GSOS System</p>
 
         <!-- نموذج لإرسال رسالة -->
-        <form action="mailto:asfawaz6071@gmail.com" method="post" enctype="text/plain">
+        <form action="mailto:asfawaz6071@gmail.com" method="post" enctype="text/plain" onsubmit="showSuccessMessage()">
             <label for="message">أرسل رسالة:</label><br>
             <textarea id="message" name="message" rows="4" cols="50" placeholder="اكتب رسالتك هنا..."></textarea><br><br>
             <input type="submit" value="إرسال" />
@@ -34,6 +52,16 @@
     <footer>
         <p>Made in Saudi</p>
     </footer>
+
+    <script>
+        // دالة لعرض إشعار النجاح
+        function showSuccessMessage() {
+            document.getElementById("success-message").style.display = "block";
+            setTimeout(function() {
+                document.getElementById("success-message").style.display = "none";
+            }, 3000); // الإشعار سيختفي بعد 3 ثوانٍ
+        }
+    </script>
 
 </body>
 </html>
