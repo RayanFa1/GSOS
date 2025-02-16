@@ -31,6 +31,7 @@
             text-align: center;
             font-size: 24px;
             color: #333;
+            margin: 20px;
         }
 
         footer {
@@ -38,14 +39,46 @@
             color: white;
             text-align: center;
             padding: 10px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
-        footer img {
-            width: 30px; /* تعديل حجم العلم */
-            margin-left: 10px;
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .success-message {
+            color: green;
+            text-align: center;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -58,9 +91,24 @@
         <p>Welcome to GSOS</p>
     </div>
 
+    <div class="form-container">
+        <h2>Send a Message</h2>
+        <form action="send_email.php" method="POST">
+            <input type="email" name="to_email" placeholder="Enter recipient email" required>
+            <textarea name="message" rows="4" placeholder="Enter your message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <div class="success-message">
+            <?php 
+                if(isset($_GET['status']) && $_GET['status'] == 'success') {
+                    echo 'تم إرسال الرسالة بنجاح!';
+                }
+            ?>
+        </div>
+    </div>
+
     <footer>
         <p>Made in Saudi</p>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Flag_of_Saudi_Arabia.svg" alt="Saudi Flag">
     </footer>
 </body>
 </html>
