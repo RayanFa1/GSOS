@@ -41,9 +41,21 @@
         <p>GSOS System</p>
 
         <!-- نموذج لإرسال رسالة -->
-        <form action="mailto:asfawaz6071@gmail.com" method="post" enctype="text/plain" onsubmit="showSuccessMessage()">
+        <form id="email-form" action="mailto:asfawaz6071@gmail.com" method="post" enctype="text/plain" onsubmit="showSuccessMessage()">
+            
+            <!-- حقل اختيار البريد الإلكتروني -->
+            <label for="email">اختار البريد الإلكتروني:</label><br>
+            <select id="email" name="email">
+                <option value="asfawaz6071@gmail.com">asfawaz6071@gmail.com</option>
+                <option value="example1@gmail.com">example1@gmail.com</option>
+                <option value="example2@gmail.com">example2@gmail.com</option>
+            </select><br><br>
+
+            <!-- حقل الرسالة -->
             <label for="message">أرسل رسالة:</label><br>
             <textarea id="message" name="message" rows="4" cols="50" placeholder="اكتب رسالتك هنا..."></textarea><br><br>
+            
+            <!-- زر الإرسال -->
             <input type="submit" value="إرسال" />
         </form>
     </div>
@@ -63,9 +75,12 @@
         }
 
         // تعديل عملية إرسال البريد لتمكين دعم النصوص العربية
-        const form = document.querySelector('form');
+        const form = document.querySelector('#email-form');
         form.onsubmit = function (event) {
             event.preventDefault(); // منع الإرسال العادي للنموذج
+
+            // الحصول على البريد الإلكتروني المختار
+            const selectedEmail = document.getElementById('email').value;
 
             // الحصول على قيمة الرسالة المدخلة
             let message = document.getElementById('message').value;
@@ -73,8 +88,8 @@
             // ترميز الرسالة بالعربية في الرابط
             let encodedMessage = encodeURIComponent(message);
 
-            // بناء رابط الـ mailto مع الرسالة
-            let mailtoLink = "mailto:asfawaz6071@gmail.com?subject=رسالة من الموقع&body=" + encodedMessage;
+            // بناء رابط الـ mailto مع الرسالة والبريد الإلكتروني
+            let mailtoLink = "mailto:" + selectedEmail + "?subject=رسالة من الموقع&body=" + encodedMessage;
 
             // فتح الرابط لإرسال الرسالة عبر البريد الإلكتروني
             window.location.href = mailtoLink;
