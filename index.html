@@ -115,6 +115,144 @@
         <p>Made in Saudi</p>
     </footer>
 
+ <!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام المراسلة</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .username-box {
+            font-size: 20px;
+            font-weight: bold;
+            color: #444;
+            background: #e6e6e6;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        label {
+            font-size: 16px;
+            color: #555;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+            resize: vertical;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .success-message {
+            display: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>نظام المراسلة</h1>
+        <p>اسم المستخدم الخاص بك:</p>
+        <div class="username-box" id="username"></div>
+
+        <form id="message-form">
+            <label for="message">أدخل رسالتك:</label><br>
+            <textarea id="message" name="message" placeholder="اكتب رسالتك هنا..." required></textarea><br><br>
+            
+            <input type="submit" value="إرسال الرسالة">
+        </form>
+
+        <div class="success-message" id="success-message">تم إرسال الرسالة بنجاح!</div>
+    </div>
+
+    <script>
+        function generateRandomUsername() {
+            const randomNum = Math.floor(1000 + Math.random() * 9000); // رقم عشوائي بين 1000 و 9999
+            return "User_" + randomNum;
+        }
+
+        function setUsername() {
+            let storedUsername = localStorage.getItem("username");
+            if (!storedUsername) {
+                storedUsername = generateRandomUsername();
+                localStorage.setItem("username", storedUsername);
+            }
+            document.getElementById("username").innerText = storedUsername;
+        }
+
+        document.addEventListener("DOMContentLoaded", setUsername);
+
+        document.getElementById("message-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const username = localStorage.getItem("username");
+            const message = document.getElementById("message").value;
+
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "send_message.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById("success-message").style.display = "block";
+                    setTimeout(() => {
+                        document.getElementById("success-message").style.display = "none";
+                    }, 3000);
+                }
+            };
+            xhr.send("username=" + username + "&message=" + encodeURIComponent(message));
+
+            document.getElementById("message").value = "";
+        });
+    </script>
+
+</body>
+</html>
+    
     <script>
         // دالة لعرض إشعار النجاح
         function showSuccessMessage() {
