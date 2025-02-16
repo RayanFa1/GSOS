@@ -1,3 +1,4 @@
+/* إعدادات الجسم */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -10,8 +11,37 @@ body {
     justify-content: center;
     height: 100vh;
     text-align: center;
+    opacity: 0; /* البداية بتكون شفافة */
+    animation: fadeIn 1s forwards; /* الأنيميشن هنا */
 }
 
+/* أنيميشن fadeIn */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* الأنيميشن للعناوين */
+header, .feature {
+    animation: slideIn 1s ease-out;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* بقية التنسيقات كما هي */
 header {
     background-color: #111;
     padding: 20px;
