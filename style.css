@@ -46,6 +46,27 @@ header p {
     background-color: #555; /* اللون الرمادي الفاتح عند التمرير */
 }
 
+/* زر الرجوع إلى الصفحة الرئيسية */
+.back-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #333; /* اللون الأسود */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* تأثير عند التمرير على الزر */
+.back-btn:hover {
+    background-color: #555; /* اللون الرمادي الفاتح عند التمرير */
+    transform: scale(1.05); /* تأثير تكبير الزر عند التمرير */
+}
+
 /* محتوى الصفحة الرئيسية */
 .main-content {
     text-align: center;
