@@ -61,6 +61,27 @@
                 document.getElementById("success-message").style.display = "none";
             }, 3000); // الإشعار سيختفي بعد 3 ثوانٍ
         }
+
+        // تعديل عملية إرسال البريد لتمكين دعم النصوص العربية
+        const form = document.querySelector('form');
+        form.onsubmit = function (event) {
+            event.preventDefault(); // منع الإرسال العادي للنموذج
+
+            // الحصول على قيمة الرسالة المدخلة
+            let message = document.getElementById('message').value;
+
+            // ترميز الرسالة بالعربية في الرابط
+            let encodedMessage = encodeURIComponent(message);
+
+            // بناء رابط الـ mailto مع الرسالة
+            let mailtoLink = "mailto:asfawaz6071@gmail.com?subject=رسالة من الموقع&body=" + encodedMessage;
+
+            // فتح الرابط لإرسال الرسالة عبر البريد الإلكتروني
+            window.location.href = mailtoLink;
+
+            // عرض إشعار النجاح
+            showSuccessMessage();
+        };
     </script>
 
 </body>
