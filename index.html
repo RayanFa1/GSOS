@@ -9,34 +9,9 @@
         /* خلفية الصفحة */
         body {
             background-color: #f3f3f3;
-            position: relative;
-            overflow: hidden;
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-        }
-
-        /* مربع كبير يدور على نفسه */
-        .rotating-square {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background-color: #007bff; /* اللون الأزرق */
-            animation: rotateSquare 5s infinite linear; /* الحركة الدائرية */
-            border-radius: 15px; /* زوايا دائرية لإعطاء شكل جميل */
-            top: 50%; 
-            left: 50%; 
-            transform: translate(-50%, -50%); /* لضمان التمركز */
-        }
-
-        /* حركة الدوران */
-        @keyframes rotateSquare {
-            0% {
-                transform: translate(-50%, -50%) rotate(0deg);
-            }
-            100% {
-                transform: translate(-50%, -50%) rotate(360deg);
-            }
         }
 
         /* تنسيق حقل الرسالة */
@@ -50,8 +25,6 @@
             resize: vertical;
             background-color: #f9f9f9;
             transition: border-color 0.3s ease, background-color 0.3s ease;
-            position: relative;
-            z-index: 2;
         }
 
         /* عند التركيز على الحقل */
@@ -79,8 +52,6 @@
             font-size: 14px;
             margin-bottom: 5px;
             display: block;
-            position: relative;
-            z-index: 2;
         }
 
         input[type="email"], input[type="submit"] {
@@ -90,8 +61,6 @@
             border-radius: 5px;
             border: 1px solid #ccc;
             font-size: 14px;
-            position: relative;
-            z-index: 2;
         }
 
         input[type="submit"] {
@@ -115,8 +84,6 @@
 
         /* محتوى الصفحة */
         .main-content {
-            z-index: 2;
-            position: relative;
             text-align: center;
             margin-top: 50px;
         }
@@ -158,9 +125,6 @@
     <footer>
         <p>Made in Saudi</p>
     </footer>
-
-    <!-- مربع كبير يدور على نفسه في الخلفية -->
-    <div class="rotating-square"></div>
 
     <script>
         // دالة لعرض إشعار النجاح
