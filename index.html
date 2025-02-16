@@ -6,42 +6,37 @@
     <title>Global Smart Operating System</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* خلفية تتحرك مع مربعات زرقاء صغيرة */
+        /* خلفية الصفحة */
         body {
             background-color: #f3f3f3;
             position: relative;
-            overflow: hidden; /* لمنع المربعات من الخروج خارج الشاشة */
+            overflow: hidden;
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
         }
 
-        /* إنشاء المربعات المتحركة */
-        .moving-square {
+        /* مربع كبير يدور على نفسه */
+        .rotating-square {
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 200px;
+            height: 200px;
             background-color: #007bff; /* اللون الأزرق */
-            animation: moveSquares 10s infinite linear; /* حركة المربعات */
+            animation: rotateSquare 5s infinite linear; /* الحركة الدائرية */
+            border-radius: 15px; /* زوايا دائرية لإعطاء شكل جميل */
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); /* لضمان التمركز */
         }
 
-        /* تحريك المربعات بشكل عشوائي */
-        @keyframes moveSquares {
+        /* حركة الدوران */
+        @keyframes rotateSquare {
             0% {
-                transform: translate(0, 0);
+                transform: translate(-50%, -50%) rotate(0deg);
             }
             100% {
-                transform: translate(100vw, 100vh); /* تحريك المربع لمسافة 100% من عرض وارتفاع الشاشة */
+                transform: translate(-50%, -50%) rotate(360deg);
             }
-        }
-
-        /* إضافة تأثيرات حركية للمربعات */
-        .moving-square:nth-child(odd) {
-            animation-duration: 15s;
-        }
-
-        .moving-square:nth-child(even) {
-            animation-duration: 12s;
         }
 
         /* تنسيق حقل الرسالة */
@@ -56,7 +51,7 @@
             background-color: #f9f9f9;
             transition: border-color 0.3s ease, background-color 0.3s ease;
             position: relative;
-            z-index: 2; /* لضمان أن الحقل فوق المربعات */
+            z-index: 2;
         }
 
         /* عند التركيز على الحقل */
@@ -96,7 +91,7 @@
             border: 1px solid #ccc;
             font-size: 14px;
             position: relative;
-            z-index: 2; /* لضمان أن الحقل فوق المربعات */
+            z-index: 2;
         }
 
         input[type="submit"] {
@@ -120,7 +115,7 @@
 
         /* محتوى الصفحة */
         .main-content {
-            z-index: 2; /* لضمان أن المحتوى فوق المربعات */
+            z-index: 2;
             position: relative;
             text-align: center;
             margin-top: 50px;
@@ -167,14 +162,8 @@
         <p>Made in Saudi</p>
     </footer>
 
-    <!-- إنشاء مربعات زرقاء تتحرك في الخلفية -->
-    <div class="moving-square" style="top: 10%; left: 15%;"></div>
-    <div class="moving-square" style="top: 50%; left: 30%;"></div>
-    <div class="moving-square" style="top: 70%; left: 80%;"></div>
-    <div class="moving-square" style="top: 20%; left: 60%;"></div>
-    <div class="moving-square" style="top: 80%; left: 10%;"></div>
-    <div class="moving-square" style="top: 40%; left: 70%;"></div>
-    <div class="moving-square" style="top: 60%; left: 40%;"></div>
+    <!-- مربع كبير يدور على نفسه في الخلفية -->
+    <div class="rotating-square"></div>
 
     <script>
         // دالة لعرض إشعار النجاح
