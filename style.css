@@ -7,51 +7,18 @@ body {
     padding: 0;
 }
 
-/* تنسيق للنموذج في صفحة SMS */
-.sms-form-container {
+/* تنسيق للنماذج */
+.container {
     width: 80%;
-    max-width: 600px;
+    max-width: 800px;
     margin: 50px auto;
-    background-color: #333;
     padding: 20px;
+    background-color: #333;
     border-radius: 8px;
-    color: #fff;
     text-align: center;
 }
 
-.sms-form-container h1 {
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
-.sms-form-container form {
-    display: flex;
-    flex-direction: column;
-}
-
-.sms-form-container input, .sms-form-container textarea {
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #555;
-    border-radius: 5px;
-    background-color: #222;
-    color: #fff;
-}
-
-.sms-form-container button {
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.sms-form-container button:hover {
-    background-color: #0056b3;
-}
-
-/* تنسيق للزر الرجوع في صفحة SMS */
+/* تنسيق للرابط الرجوع */
 .back-btn {
     display: inline-block;
     margin: 20px;
@@ -66,89 +33,17 @@ body {
     background-color: #222;
 }
 
-/* تنسيق لصفحة index.html */
-header {
-    background-color: #111;
-    color: white;
-    text-align: center;
-    padding: 30px;
-}
-
-header h1 {
-    font-size: 36px;
-}
-
-.features {
-    display: flex;
-    justify-content: space-around;
-    margin: 40px 0;
-}
-
-.feature {
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 22%;
-    text-align: center;
-}
-
-.feature h2 {
-    font-size: 18px;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #111;
-    color: white;
-}
-
-footer p {
-    font-size: 14px;
-}
-
-/* تنسيق للزر Hamburger */
-.hamburger-menu {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-    z-index: 100;
-}
-
-.hamburger-menu .line {
-    width: 35px;
-    height: 5px;
-    background-color: white;
-    margin: 6px 0;
-    transition: 0.4s;
-}
-
-.menu {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    background-color: #333;
-    width: 200px;
-    height: 100%;
-    padding-top: 50px;
-}
-
-.menu-item {
-    display: block;
-    padding: 10px;
-    color: white;
-    text-decoration: none;
-    border-bottom: 1px solid #444;
-}
-
-.menu-item:hover {
+/* تنسيق لرابط صفحة عن النظام */
+.nav-btn {
+    display: inline-block;
+    margin: 20px;
+    padding: 10px 20px;
     background-color: #444;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
 }
 
-/* تنسيق عند فتح القائمة */
-.menu.open {
-    display: block;
+.nav-btn:hover {
+    background-color: #222;
 }
