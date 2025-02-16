@@ -3,41 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مميزات الموقع</title>
+    <title>نظام GHA</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- زر ثلاث خطوط -->
-<div class="hamburger-menu" onclick="toggleMenu()">
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="line"></div>
-</div>
 
+    <!-- زر ثلاث خطوط (Hamburger Menu) -->
+    <div class="hamburger-menu" onclick="toggleMenu()">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
+    <!-- قائمة منسدلة -->
+    <div id="menu" class="menu">
+        <a href="page2.html" class="menu-item">الصفحة الثانية</a>
+        <a href="page3.html" class="menu-item">الصفحة الثالثة</a>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
     <header>
-        <h1>مرحبًا بك في موقعنا</h1>
-    </p> حياك الله في major</p>
+        <h1>اهلا وسهلا بكم في نظام GHA</h1>
     </header>
 
-    <section class="features">
+    <div class="features">
         <div class="feature">
-            <h2>سهولة الاستخدام</h2>
-            <p>الموقع يتميز بواجهة سهلة الاستخدام ومناسبة للجميع.</p>
+            <h2>نظام مدني متوفر للجميع</h2>
         </div>
         <div class="feature">
-            <h2>تصميم متجاوب</h2>
-            <p>يتناسب مع جميع الأجهزة سواء الجوال أو الكمبيوتر.</p>
+            <h2>نظام سلس ومرن</h2>
         </div>
         <div class="feature">
-            <h2>أداء سريع</h2>
-            <p>تم تحسين الموقع ليكون سريع الاستجابة.</p>
+            <h2>واجهة مستخدم سلسة ومرنة</h2>
         </div>
-    </section>
+        <div class="feature">
+            <h2>الوان مريحة للعين</h2>
+        </div>
+    </div>
 
     <footer>
-        <p>&copy; 2025 جميع الحقوق محفوظة</p>
+        <p>&copy; 2025 نظام GHA. جميع الحقوق محفوظة.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>
