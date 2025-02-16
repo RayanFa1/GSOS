@@ -83,20 +83,24 @@ footer {
     position: absolute;
     bottom: 0;
 }
-/* تنسيق الزر في الزاوية العليا اليمنى */
-.top-button {
+/* تنسيق زر ثلاث خطوط */
+.hamburger-menu {
     position: fixed; /* يثبت الزر في مكانه */
     top: 20px;
     right: 20px;
-    background-color: #444;
-    color: #fff;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    text-decoration: none; /* إزالة الخط السفلي من الرابط */
-    transition: background-color 0.3s ease;
+    cursor: pointer;
+    z-index: 1000; /* يجعل الزر فوق العناصر الأخرى */
 }
 
-.top-button:hover {
-    background-color: #666; /* تغيير اللون عند التمرير */
+.hamburger-menu .line {
+    width: 30px;
+    height: 4px;
+    background-color: #fff;
+    margin: 6px 0;
+    border-radius: 2px;
+}
+
+/* تأثير عند الضغط على الزر */
+.hamburger-menu:hover .line {
+    background-color: #ccc; /* تغيير اللون عند التمرير */
 }
