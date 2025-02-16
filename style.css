@@ -83,3 +83,20 @@ footer {
     position: absolute;
     bottom: 0;
 }
+/* تنسيق الزر في الزاوية العليا اليمنى */
+.top-button {
+    position: fixed; /* يثبت الزر في مكانه */
+    top: 20px;
+    right: 20px;
+    background-color: #444;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none; /* إزالة الخط السفلي من الرابط */
+    transition: background-color 0.3s ease;
+}
+
+.top-button:hover {
+    background-color: #666; /* تغيير اللون عند التمرير */
+}
