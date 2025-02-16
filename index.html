@@ -8,52 +8,18 @@
 </head>
 <body>
 
-    <!-- زر ثلاث خطوط (Hamburger Menu) -->
-    <div class="hamburger-menu" onclick="toggleMenu()">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-    </div>
-
-    <!-- قائمة منسدلة -->
-    <div id="menu" class="menu">
-        <a href="page2.html" class="menu-item">الصفحة الثانية</a>
-        <a href="page3.html" class="menu-item">الصفحة الثالثة</a>
-    </div>
-
-    <!-- المحتوى الرئيسي -->
+    <!-- رأس الصفحة -->
     <header>
-        <h1>اهلا وسهلا بكم في نظام GHA</h1>
+        <h1>أهلاً وسهلاً بكم في نظام GHA</h1>
     </header>
 
-    <div class="features">
-        <div class="feature">
-            <h2>نظام مدني متوفر للجميع</h2>
-        </div>
-        <div class="feature">
-            <h2>نظام سلس ومرن</h2>
-        </div>
-        <div class="feature">
-            <h2>واجهة مستخدم سلسة ومرنة</h2>
-        </div>
-        <div class="feature">
-            <h2>الوان مريحة للعين</h2>
-        </div>
+    <!-- إضافة رابط إلى صفحة "عن النظام" -->
+    <div class="navigation">
+        <a href="about.html" class="nav-btn">عن النظام</a>
     </div>
 
-    <footer>
-        <p>&copy; 2025 نظام GHA. جميع الحقوق محفوظة.</p>
-    </footer>
+    <!-- محتوى الصفحة الرئيسية هنا -->
+    <p>مرحباً بكم في الموقع الرسمي لنظام GHA. نحن هنا لتقديم أفضل الخدمات لكم.</p>
 
-    <script>
-        function toggleMenu() {
-            var menu = document.getElementById('menu');
-            if (menu.style.display === "block") {
-                menu.style.display = "none";
-            } else {
-                menu.style.display = "block";
-            }
-        }
-    </script>
 </body>
 </html>
