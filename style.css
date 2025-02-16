@@ -34,9 +34,10 @@ body::before {
 header {
     background-color: #333; /* اللون الأسود */
     color: #fff;
-    padding: 40px 0;
+    padding: 40px 20px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 header h1 {
@@ -87,14 +88,16 @@ header p {
     display: none;
     flex-direction: column;
     cursor: pointer;
-    margin-top: 20px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
 }
 
 .hamburger-menu .line {
     width: 30px;
     height: 4px;
     margin: 6px 0;
-    background-color: #333;
+    background-color: #fff;
 }
 
 /* القائمة المنبثقة */
