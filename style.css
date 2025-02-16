@@ -1,130 +1,154 @@
-/* إعدادات الجسم */
+/* تنسيق الجسم الأساسي للصفحة */
 body {
+    background-color: #111;
+    color: #fff;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(45deg, #111, #333); /* خلفية متدرجة */
+}
+
+/* تنسيق للنموذج في صفحة SMS */
+.sms-form-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
     color: #fff;
+    text-align: center;
+}
+
+.sms-form-container h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.sms-form-container form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+}
+
+.sms-form-container input, .sms-form-container textarea {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #222;
+    color: #fff;
+}
+
+.sms-form-container button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sms-form-container button:hover {
+    background-color: #0056b3;
+}
+
+/* تنسيق للزر الرجوع في صفحة SMS */
+.back-btn {
+    display: inline-block;
+    margin: 20px;
+    padding: 10px 20px;
+    background-color: #444;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.back-btn:hover {
+    background-color: #222;
+}
+
+/* تنسيق لصفحة index.html */
+header {
+    background-color: #111;
+    color: white;
     text-align: center;
-    overflow: hidden; /* لمنع التمرير في حال كانت الأشكال كبيرة */
-    position: relative;
+    padding: 30px;
 }
 
-/* إضافة أشكال هندسية في الخلفية */
-body::before {
-    content: '';
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 200px;
-    background-color: rgba(0, 123, 255, 0.4); /* اللون الأزرق */
-    border-radius: 50%;
-    animation: rotateShape 6s infinite linear;
+header h1 {
+    font-size: 36px;
 }
 
-body::after {
-    content: '';
-    position: absolute;
-    bottom: 10%;
-    right: 5%;
-    width: 300px;
-    height: 300px;
-    background-color: rgba(40, 167, 69, 0.4); /* اللون الأخضر */
-    border-radius: 10%;
-    animation: rotateShape 8s infinite reverse linear;
+.features {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px 0;
 }
 
-/* أنيميشن للدوران */
-@keyframes rotateShape {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+.feature {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 22%;
+    text-align: center;
 }
 
-/* تنسيق زر ثلاث خطوط (Hamburger Menu) */
+.feature h2 {
+    font-size: 18px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #111;
+    color: white;
+}
+
+footer p {
+    font-size: 14px;
+}
+
+/* تنسيق للزر Hamburger */
 .hamburger-menu {
-    position: fixed; /* يثبت الزر في مكانه */
+    position: fixed;
     top: 20px;
     right: 20px;
     cursor: pointer;
-    z-index: 1000; /* يجعل الزر فوق العناصر الأخرى */
+    z-index: 100;
 }
 
 .hamburger-menu .line {
-    width: 30px;
-    height: 4px;
-    background-color: #fff;
+    width: 35px;
+    height: 5px;
+    background-color: white;
     margin: 6px 0;
-    border-radius: 2px;
+    transition: 0.4s;
 }
 
-/* تأثير عند الضغط على الزر */
-.hamburger-menu:hover .line {
-    background-color: #ccc; /* تغيير اللون عند التمرير */
-}
-
-/* قائمة منسدلة تظهر عند الضغط */
 .menu {
-    display: none; /* البداية مخفية */
+    display: none;
     position: fixed;
-    top: 50px;
-    right: 20px;
+    top: 0;
+    right: 0;
     background-color: #333;
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 1001;
+    width: 200px;
+    height: 100%;
+    padding-top: 50px;
 }
 
 .menu-item {
-    color: #fff;
-    text-decoration: none;
     display: block;
     padding: 10px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid #444;
 }
 
 .menu-item:hover {
     background-color: #444;
 }
 
-/* بقية التنسيقات كما هي */
-header {
-    background-color: #111;
-    padding: 20px;
-    width: 100%;
-}
-
-.features {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 80%;
-    max-width: 600px;
-    margin: 20px 0;
-}
-
-.feature {
-    background-color: #222;
-    padding: 15px;
-    margin: 10px 0;
-    border-radius: 5px;
-    width: 100%;
-}
-
-footer {
-    background-color: #111;
-    padding: 10px;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
+/* تنسيق عند فتح القائمة */
+.menu.open {
+    display: block;
 }
