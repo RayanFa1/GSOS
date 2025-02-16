@@ -1,120 +1,50 @@
-/* إعدادات عامة للصفحة */
-body {
-    background-color: #f4f4f4; /* اللون الأبيض */
-    color: #333;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    position: relative;
-}
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Smart Operating System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-/* رأس الصفحة */
-header {
-    background-color: #D1B28C; /* اللون البني الفاتح */
-    color: #fff;
-    padding: 40px 20px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
+    <!-- رأس الصفحة -->
+    <header>
+        <div class="header-content">
+            <h1>مرحبا بكم في Global Smart Operating System</h1>
+            <p>يقدم النظام أفضل تجربة للعملاء</p>
+            <p>نظام مرن وسلس</p>
+            <p>نظام يتيح للمستخدم العديد من الأدوات</p>
+        </div>
 
-header h1 {
-    margin: 0;
-    font-size: 36px;
-    font-weight: bold;
-}
+        <!-- زر التنقل إلى صفحة "عن النظام" -->
+        <a href="about.html" class="nav-btn">عن النظام</a>
+    </header>
 
-header p {
-    font-size: 18px;
-    margin-top: 10px;
-}
+    <!-- محتوى الصفحة الرئيسية -->
+    <div class="main-content">
+        <p>نحن في GHA نقدم لك حلولاً مدنية حديثة مع واجهات مستخدم مريحة وسهلة.</p>
+    </div>
 
-/* زر التنقل إلى صفحة "عن النظام" */
-.nav-btn {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: #333; /* اللون الأسود */
-    color: #fff;
-    text-decoration: none;
-    border-radius: 30px;
-    font-size: 18px;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-}
+    <!-- قائمة التنقل Hamburger -->
+    <div class="hamburger-menu" onclick="toggleMenu()">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
 
-.nav-btn:hover {
-    background-color: #555; /* اللون الرمادي الفاتح عند التمرير */
-}
+    <!-- القائمة المنبثقة -->
+    <div class="menu">
+        <a href="index.html" class="menu-item">الصفحة الرئيسية</a>
+        <a href="sms.html" class="menu-item">الرسائل</a>
+        <a href="about.html" class="menu-item">عن النظام</a>
+    </div>
 
-/* محتوى الصفحة الرئيسية */
-.main-content {
-    text-align: center;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #fff;
-    max-width: 800px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
+    <script>
+        function toggleMenu() {
+            document.querySelector('.menu').classList.toggle('open');
+        }
+    </script>
 
-.main-content p {
-    font-size: 20px;
-}
-
-/* قائمة التنقل Hamburger */
-.hamburger-menu {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-.hamburger-menu .line {
-    width: 30px;
-    height: 4px;
-    margin: 6px 0;
-    background-color: #fff;
-}
-
-/* القائمة المنبثقة */
-.menu {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    background-color: #333; /* اللون الأسود */
-    width: 200px;
-    height: 100%;
-    padding-top: 60px;
-}
-
-.menu.open {
-    display: block;
-}
-
-.menu-item {
-    color: white;
-    text-decoration: none;
-    padding: 15px;
-    display: block;
-    font-size: 18px;
-}
-
-.menu-item:hover {
-    background-color: #555; /* اللون الرمادي الفاتح عند التمرير */
-}
-
-/* تنسيق زر القائمة المنبثقة */
-@media (max-width: 768px) {
-    .hamburger-menu {
-        display: flex;
-    }
-    .menu {
-        display: none;
-    }
-    .menu.open {
-        display: block;
-    }
-}
+</body>
+</html>
