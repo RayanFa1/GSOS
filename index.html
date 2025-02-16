@@ -6,27 +6,7 @@
     <title>Global Smart Operating System</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* تنسيق الإشعار */
-        #location-message {
-            display: none;
-            background-color: #4CAF50; /* اللون الأخضر */
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            font-size: 18px;
-            z-index: 1000;
-        }
-
-        .location-info {
-            font-size: 18px;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        /* باقي التنسيقات من الكود السابق */
+        /* تنسيق حقل الرسالة */
         textarea {
             width: 100%;
             height: 150px;
@@ -39,13 +19,56 @@
             transition: border-color 0.3s ease, background-color 0.3s ease;
         }
 
+        /* عند التركيز على الحقل */
         textarea:focus {
             border-color: #4CAF50;
             background-color: #e6f7e6;
         }
 
+        /* إشعار النجاح */
+        #success-message {
+            display: none;
+            background-color: #4CAF50; /* اللون الأخضر */
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            font-size: 18px;
+            z-index: 1000;
+        }
+
+        /* تنسيق الحقول والزر */
+        label {
+            font-size: 18px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="email"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* تنسيق كلمة "Made in Saudi" */
         footer p {
-            font-size: 12px;
+            font-size: 12px; /* تصغير حجم النص */
             text-align: center;
             margin-top: 20px;
             color: #333;
@@ -55,7 +78,7 @@
 <body>
 
     <!-- إشعار النجاح -->
-    <div id="location-message">تم إرسال موقعك بنجاح!</div>
+    <div id="success-message">تم إرسال الرسالة بنجاح!</div>
 
     <!-- رأس الصفحة -->
     <header>
@@ -74,19 +97,17 @@
         <!-- نموذج لإرسال رسالة -->
         <form id="email-form" action="mailto:asfawaz6071@gmail.com" method="post" enctype="text/plain" onsubmit="showSuccessMessage()">
             
+            <!-- حقل إدخال البريد الإلكتروني -->
             <label for="email">أدخل البريد الإلكتروني الذي تريد إرسال الرسالة إليه:</label><br>
             <input type="email" id="email" name="email" placeholder="اكتب البريد الإلكتروني" required><br><br>
 
+            <!-- حقل الرسالة -->
             <label for="message">أرسل رسالة:</label><br>
             <textarea id="message" name="message" placeholder="اكتب رسالتك هنا..." required></textarea><br><br>
             
+            <!-- زر الإرسال -->
             <input type="submit" value="إرسال" />
         </form>
-
-        <!-- زر لتتبع الموقع -->
-        <div class="location-info">
-            <button onclick="getLocation()">الحصول على الموقع الجغرافي</button>
-        </div>
     </div>
 
     <!-- كلمة Made in Saudi في أسفل الصفحة -->
@@ -97,60 +118,35 @@
     <script>
         // دالة لعرض إشعار النجاح
         function showSuccessMessage() {
-            document.getElementById("location-message").style.display = "block";
+            document.getElementById("success-message").style.display = "block";
             setTimeout(function() {
-                document.getElementById("location-message").style.display = "none";
+                document.getElementById("success-message").style.display = "none";
             }, 3000); // الإشعار سيختفي بعد 3 ثوانٍ
         }
 
-        // دالة للحصول على الموقع الجغرافي
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(sendLocationByEmail, showError);
-            } else {
-                alert("متصفحك لا يدعم هذه الميزة.");
-            }
-        }
+        // تعديل عملية إرسال البريد لتمكين دعم النصوص العربية
+        const form = document.querySelector('#email-form');
+        form.onsubmit = function (event) {
+            event.preventDefault(); // منع الإرسال العادي للنموذج
 
-        // إرسال الموقع عبر البريد الإلكتروني
-        function sendLocationByEmail(position) {
-            const latitude = position.coords.latitude;
-            const longitude = position.coords.longitude;
+            // الحصول على البريد الإلكتروني المدخل
+            const recipientEmail = document.getElementById('email').value;
 
-            // بناء رسالة البريد الإلكتروني
-            const subject = encodeURIComponent("موقع المستخدم");
-            const body = encodeURIComponent("خط العرض: " + latitude + "\nخط الطول: " + longitude);
+            // الحصول على قيمة الرسالة المدخلة
+            let message = document.getElementById('message').value;
 
-            // إعداد رابط mailto لإرسال البريد الإلكتروني
-            const mailtoLink = "mailto:asfawaz6071@gmail.com?subject=" + subject + "&body=" + body;
+            // ترميز الرسالة بالعربية في الرابط
+            let encodedMessage = encodeURIComponent(message);
 
-            // إرسال البريد الإلكتروني
+            // بناء رابط الـ mailto مع الرسالة والبريد الإلكتروني
+            let mailtoLink = "mailto:" + recipientEmail + "?subject=رسالة من الموقع&body=" + encodedMessage;
+
+            // فتح الرابط لإرسال الرسالة عبر البريد الإلكتروني
             window.location.href = mailtoLink;
 
             // عرض إشعار النجاح
-            document.getElementById("location-message").style.display = "block";
-            setTimeout(function() {
-                document.getElementById("location-message").style.display = "none";
-            }, 3000); // الإشعار سيختفي بعد 3 ثوانٍ
-        }
-
-        // التعامل مع الأخطاء
-        function showError(error) {
-            switch(error.code) {
-                case error.PERMISSION_DENIED:
-                    alert("لم يتم السماح بالحصول على الموقع.");
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    alert("الموقع غير متاح.");
-                    break;
-                case error.TIMEOUT:
-                    alert("انتهت المهلة للحصول على الموقع.");
-                    break;
-                case error.UNKNOWN_ERROR:
-                    alert("حدث خطأ غير معروف.");
-                    break;
-            }
-        }
+            showSuccessMessage();
+        };
     </script>
 
 </body>
