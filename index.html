@@ -14,39 +14,35 @@
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
         /* مربع كبير يدور على نفسه */
         .rotating-square {
             position: absolute;
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             background-color: #007bff; /* اللون الأزرق */
-            animation: rotateSquare 10s infinite linear; /* الحركة الدائرية */
+            animation: rotateSquare 5s infinite linear; /* الحركة الدائرية */
             border-radius: 15px; /* زوايا دائرية لإعطاء شكل جميل */
-            top: 20%; 
-            left: 50%;
-            transform: translateX(-50%) rotate(0deg); /* لضمان التمركز */
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); /* لضمان التمركز */
         }
 
         /* حركة الدوران */
         @keyframes rotateSquare {
             0% {
-                transform: translateX(-50%) rotate(0deg);
+                transform: translate(-50%, -50%) rotate(0deg);
             }
             100% {
-                transform: translateX(-50%) rotate(360deg);
+                transform: translate(-50%, -50%) rotate(360deg);
             }
         }
 
         /* تنسيق حقل الرسالة */
         textarea {
-            width: 250px;
-            height: 80px;
+            width: 100%;
+            height: 100px;
             padding: 8px;
             border-radius: 6px;
             border: 1px solid #ccc;
@@ -88,7 +84,7 @@
         }
 
         input[type="email"], input[type="submit"] {
-            width: 250px;
+            width: 100%;
             padding: 8px;
             margin-bottom: 8px;
             border-radius: 5px;
@@ -117,25 +113,12 @@
             margin-top: 20px;
         }
 
-        /* تنسيق المحتوى */
+        /* محتوى الصفحة */
         .main-content {
             z-index: 2;
             position: relative;
             text-align: center;
-        }
-
-        /* تنسيق النموذج في منتصف الصفحة */
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        /* تنسيق العنوان */
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
+            margin-top: 50px;
         }
     </style>
 </head>
@@ -143,9 +126,6 @@
 
     <!-- إشعار النجاح -->
     <div id="success-message">تم إرسال الرسالة بنجاح!</div>
-
-    <!-- مربع كبير يدور على نفسه في الخلفية -->
-    <div class="rotating-square"></div>
 
     <!-- رأس الصفحة -->
     <header>
@@ -178,6 +158,9 @@
     <footer>
         <p>Made in Saudi</p>
     </footer>
+
+    <!-- مربع كبير يدور على نفسه في الخلفية -->
+    <div class="rotating-square"></div>
 
     <script>
         // دالة لعرض إشعار النجاح
