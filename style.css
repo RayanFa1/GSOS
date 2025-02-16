@@ -29,44 +29,6 @@ header p {
     margin-top: 10px;
 }
 
-/* زر التنقل إلى صفحة "عن النظام" */
-.nav-btn {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: #333; /* اللون الأسود */
-    color: #fff;
-    text-decoration: none;
-    border-radius: 30px;
-    font-size: 18px;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-}
-
-.nav-btn:hover {
-    background-color: #555; /* اللون الرمادي الفاتح عند التمرير */
-}
-
-/* زر الرجوع إلى الصفحة الرئيسية */
-.back-btn {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: #333; /* اللون الأسود */
-    color: #fff;
-    text-decoration: none;
-    border-radius: 30px;
-    font-size: 18px;
-    margin-top: 20px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-/* تأثير عند التمرير على الزر */
-.back-btn:hover {
-    background-color: #555; /* اللون الرمادي الفاتح عند التمرير */
-    transform: scale(1.05); /* تأثير تكبير الزر عند التمرير */
-}
-
 /* محتوى الصفحة الرئيسية */
 .main-content {
     text-align: center;
@@ -82,60 +44,14 @@ header p {
     font-size: 20px;
 }
 
-/* قائمة التنقل Hamburger */
-.hamburger-menu {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-.hamburger-menu .line {
-    width: 30px;
-    height: 4px;
-    margin: 6px 0;
-    background-color: #fff;
-}
-
-/* القائمة المنبثقة */
-.menu {
-    display: none;
+/* كلمة Made in Saudi في أسفل الصفحة */
+footer {
     position: fixed;
-    top: 0;
-    right: 0;
+    bottom: 0;
+    width: 100%;
     background-color: #333; /* اللون الأسود */
-    width: 200px;
-    height: 100%;
-    padding-top: 60px;
-}
-
-.menu.open {
-    display: block;
-}
-
-.menu-item {
-    color: white;
-    text-decoration: none;
-    padding: 15px;
-    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
     font-size: 18px;
-}
-
-.menu-item:hover {
-    background-color: #555; /* اللون الرمادي الفاتح عند التمرير */
-}
-
-/* تنسيق زر القائمة المنبثقة */
-@media (max-width: 768px) {
-    .hamburger-menu {
-        display: flex;
-    }
-    .menu {
-        display: none;
-    }
-    .menu.open {
-        display: block;
-    }
 }
