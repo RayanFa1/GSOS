@@ -55,7 +55,7 @@
 <body>
 
     <!-- إشعار النجاح -->
-    <div id="location-message">تم الحصول على موقعك بنجاح!</div>
+    <div id="location-message">تم إرسال موقعك بنجاح!</div>
 
     <!-- رأس الصفحة -->
     <header>
@@ -86,7 +86,6 @@
         <!-- زر لتتبع الموقع -->
         <div class="location-info">
             <button onclick="getLocation()">الحصول على الموقع الجغرافي</button>
-            <p id="location"></p>
         </div>
     </div>
 
@@ -107,17 +106,28 @@
         // دالة للحصول على الموقع الجغرافي
         function getLocation() {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition, showError);
+                navigator.geolocation.getCurrentPosition(sendLocationByEmail, showError);
             } else {
-                document.getElementById("location").innerHTML = "متصفحك لا يدعم هذه الميزة.";
+                alert("متصفحك لا يدعم هذه الميزة.");
             }
         }
 
-        // عرض الموقع
-        function showPosition(position) {
+        // إرسال الموقع عبر البريد الإلكتروني
+        function sendLocationByEmail(position) {
             const latitude = position.coords.latitude;
             const longitude = position.coords.longitude;
-            document.getElementById("location").innerHTML = "خط العرض: " + latitude + "<br>خط الطول: " + longitude;
+
+            // بناء رسالة البريد الإلكتروني
+            const subject = encodeURIComponent("موقع المستخدم");
+            const body = encodeURIComponent("خط العرض: " + latitude + "\nخط الطول: " + longitude);
+
+            // إعداد رابط mailto لإرسال البريد الإلكتروني
+            const mailtoLink = "mailto:asfawaz6071@gmail.com?subject=" + subject + "&body=" + body;
+
+            // إرسال البريد الإلكتروني
+            window.location.href = mailtoLink;
+
+            // عرض إشعار النجاح
             document.getElementById("location-message").style.display = "block";
             setTimeout(function() {
                 document.getElementById("location-message").style.display = "none";
@@ -128,16 +138,16 @@
         function showError(error) {
             switch(error.code) {
                 case error.PERMISSION_DENIED:
-                    document.getElementById("location").innerHTML = "لم يتم السماح بالحصول على الموقع.";
+                    alert("لم يتم السماح بالحصول على الموقع.");
                     break;
                 case error.POSITION_UNAVAILABLE:
-                    document.getElementById("location").innerHTML = "الموقع غير متاح.";
+                    alert("الموقع غير متاح.");
                     break;
                 case error.TIMEOUT:
-                    document.getElementById("location").innerHTML = "انتهت المهلة للحصول على الموقع.";
+                    alert("انتهت المهلة للحصول على الموقع.");
                     break;
                 case error.UNKNOWN_ERROR:
-                    document.getElementById("location").innerHTML = "حدث خطأ غير معروف.";
+                    alert("حدث خطأ غير معروف.");
                     break;
             }
         }
