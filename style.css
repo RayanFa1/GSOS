@@ -1,49 +1,143 @@
-/* تنسيق الجسم الأساسي للصفحة */
+/* أساسي: إعدادات عامة للصفحة */
 body {
-    background-color: #111;
-    color: #fff;
-    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-/* تنسيق للنماذج */
-.container {
-    width: 80%;
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #333;
-    border-radius: 8px;
-    text-align: center;
-}
-
-/* تنسيق للرابط الرجوع */
-.back-btn {
-    display: inline-block;
-    margin: 20px;
-    padding: 10px 20px;
-    background-color: #444;
+/* رأس الصفحة */
+header {
+    background-color: #007bff;
     color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
+    padding: 40px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.back-btn:hover {
-    background-color: #222;
+header h1 {
+    margin: 0;
+    font-size: 36px;
 }
 
-/* تنسيق لرابط صفحة عن النظام */
+header p {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* زر التنقل إلى صفحة عن النظام */
 .nav-btn {
     display: inline-block;
-    margin: 20px;
-    padding: 10px 20px;
-    background-color: #444;
+    padding: 12px 24px;
+    background-color: #007bff;
     color: #fff;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 30px;
+    font-size: 18px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
 }
 
 .nav-btn:hover {
-    background-color: #222;
+    background-color: #0056b3;
+}
+
+/* محتوى الصفحة الرئيسية */
+.main-content {
+    text-align: center;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-content p {
+    font-size: 20px;
+}
+
+/* صفحة "عن النظام" */
+.about-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.about-container h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.about-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-container li {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+/* زر الرجوع */
+.back-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 24px;
+    background-color: #f44336;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #d32f2f;
+}
+
+/* القائمة المنبثقة Hamburger */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger-menu .line {
+    width: 30px;
+    height: 4px;
+    margin: 6px 0;
+    background-color: #333;
+}
+
+.menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #007bff;
+    width: 200px;
+    height: 100%;
+    padding-top: 60px;
+}
+
+.menu.open {
+    display: block;
+}
+
+.menu-item {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    display: block;
+    font-size: 18px;
+}
+
+.menu-item:hover {
+    background-color: #0056b3;
 }
