@@ -6,6 +6,25 @@
     <title>Global Smart Operating System</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* تنسيق حقل الرسالة */
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            resize: vertical;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        /* عند التركيز على الحقل */
+        textarea:focus {
+            border-color: #4CAF50;
+            background-color: #e6f7e6;
+        }
+
         /* إشعار النجاح */
         #success-message {
             display: none;
@@ -18,6 +37,33 @@
             width: 100%;
             font-size: 18px;
             z-index: 1000;
+        }
+
+        /* تنسيق الحقول والزر */
+        label {
+            font-size: 18px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="email"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
@@ -49,7 +95,7 @@
 
             <!-- حقل الرسالة -->
             <label for="message">أرسل رسالة:</label><br>
-            <textarea id="message" name="message" rows="4" cols="50" placeholder="اكتب رسالتك هنا..." required></textarea><br><br>
+            <textarea id="message" name="message" placeholder="اكتب رسالتك هنا..." required></textarea><br><br>
             
             <!-- زر الإرسال -->
             <input type="submit" value="إرسال" />
