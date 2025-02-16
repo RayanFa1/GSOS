@@ -1,10 +1,33 @@
-/* أساسي: إعدادات عامة للصفحة */
+/* إعدادات عامة للصفحة */
 body {
     background-color: #f4f4f4;
     color: #333;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
+    position: relative;
+}
+
+/* إضافة خطوط متحركة في الخلفية */
+@keyframes moveBackground {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(45deg, #f5f5dc 0px, #f5f5dc 10px, transparent 10px, transparent 20px);
+    animation: moveBackground 10s linear infinite;
+    z-index: -1;  /* لضمان أن تكون الخلفية خلف المحتوى */
 }
 
 /* رأس الصفحة */
@@ -19,6 +42,7 @@ header {
 header h1 {
     margin: 0;
     font-size: 36px;
+    font-weight: bold;
 }
 
 header p {
@@ -26,7 +50,7 @@ header p {
     margin-top: 10px;
 }
 
-/* زر التنقل إلى صفحة عن النظام */
+/* زر التنقل إلى صفحة "عن النظام" */
 .nav-btn {
     display: inline-block;
     padding: 12px 24px;
@@ -58,54 +82,12 @@ header p {
     font-size: 20px;
 }
 
-/* صفحة "عن النظام" */
-.about-container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.about-container h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.about-container ul {
-    list-style: none;
-    padding: 0;
-}
-
-.about-container li {
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-/* زر الرجوع */
-.back-btn {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 12px 24px;
-    background-color: #f44336;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 30px;
-    font-size: 18px;
-    transition: background-color 0.3s ease;
-}
-
-.back-btn:hover {
-    background-color: #d32f2f;
-}
-
-/* القائمة المنبثقة Hamburger */
+/* قائمة التنقل Hamburger */
 .hamburger-menu {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    margin-top: 20px;
 }
 
 .hamburger-menu .line {
@@ -115,6 +97,7 @@ header p {
     background-color: #333;
 }
 
+/* القائمة المنبثقة */
 .menu {
     display: none;
     position: fixed;
@@ -140,4 +123,17 @@ header p {
 
 .menu-item:hover {
     background-color: #0056b3;
+}
+
+/* تنسيق زر القائمة المنبثقة */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex;
+    }
+    .menu {
+        display: none;
+    }
+    .menu.open {
+        display: block;
+    }
 }
