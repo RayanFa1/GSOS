@@ -82,6 +82,24 @@
             border-radius: 4px;
         }
 
+        .messages-container {
+            margin-top: 20px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .message {
+            padding: 10px;
+            margin-bottom: 5px;
+            background: #e6e6e6;
+            border-radius: 4px;
+        }
+
         .footer {
             margin-top: 20px;
             font-size: 12px;
@@ -107,13 +125,18 @@
         </form>
 
         <div class="success-message" id="success-message">تم إرسال الرسالة بنجاح!</div>
+
+        <h2>الرسائل الواردة</h2>
+        <div class="messages-container" id="messages-container">
+            <p>لا توجد رسائل بعد.</p>
+        </div>
     </div>
 
     <p class="footer">Made in Saudi</p>
 
     <script>
         function generateRandomUsername() {
-            const randomNum = Math.floor(1000 + Math.random() * 9000); // رقم عشوائي بين 1000 و 9999
+            const randomNum = Math.floor(1000 + Math.random() * 9000);
             return "User_" + randomNum;
         }
 
@@ -126,7 +149,10 @@
             document.getElementById("username").innerText = storedUsername;
         }
 
-        document.addEventListener("DOMContentLoaded", setUsername);
+        document.addEventListener("DOMContentLoaded", function () {
+            setUsername();
+            loadMessages();
+        });
 
         document.getElementById("message-form").addEventListener("submit", function(event) {
             event.preventDefault();
@@ -151,6 +177,34 @@
             document.getElementById("message").value = "";
             document.getElementById("recipient").value = "";
         });
+
+        function loadMessages() {
+            const username = localStorage.getItem("username");
+
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "get_messages.php?user=" + username, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    const messagesContainer = document.getElementById("messages-container");
+                    messagesContainer.innerHTML = "";
+
+                    const messages = JSON.parse(xhr.responseText);
+                    if (messages.length === 0) {
+                        messagesContainer.innerHTML = "<p>لا توجد رسائل بعد.</p>";
+                    } else {
+                        messages.forEach(msg => {
+                            const msgElement = document.createElement("div");
+                            msgElement.classList.add("message");
+                            msgElement.innerHTML = `<strong>${msg.sender}:</strong> ${msg.message}`;
+                            messagesContainer.appendChild(msgElement);
+                        });
+                    }
+                }
+            };
+            xhr.send();
+        }
+
+        setInterval(loadMessages, 5000);
     </script>
 
 </body>
