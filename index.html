@@ -6,6 +6,32 @@
     <title>Global Smart Operating System</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* خلفية تتحرك مع مربعات زرقاء صغيرة */
+        body {
+            background-color: #f3f3f3;
+            position: relative;
+            overflow: hidden; /* لمنع المربعات من الخروج خارج الشاشة */
+        }
+
+        /* إنشاء المربعات المتحركة */
+        .moving-square {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #007bff; /* اللون الأزرق */
+            animation: moveSquares 10s infinite linear; /* حركة المربعات */
+        }
+
+        /* تحريك المربعات بشكل عشوائي */
+        @keyframes moveSquares {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(100vw, 100vh); /* تحريك المربع لمسافة 100% من عرض وارتفاع الشاشة */
+            }
+        }
+
         /* تنسيق حقل الرسالة */
         textarea {
             width: 100%;
@@ -114,6 +140,13 @@
     <footer>
         <p>Made in Saudi</p>
     </footer>
+
+    <!-- إنشاء مربعات زرقاء تتحرك في الخلفية -->
+    <div class="moving-square" style="top: 10%; left: 15%;"></div>
+    <div class="moving-square" style="top: 50%; left: 30%;"></div>
+    <div class="moving-square" style="top: 70%; left: 80%;"></div>
+    <div class="moving-square" style="top: 20%; left: 60%;"></div>
+    <div class="moving-square" style="top: 80%; left: 10%;"></div>
 
     <script>
         // دالة لعرض إشعار النجاح
