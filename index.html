@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GSOS</title>
+    <title>إرسال رسالة</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, #d2b48c, #fff); /* بني فاتح إلى أبيض */
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            text-align: center;
         }
 
         .container {
+            width: 100%;
             max-width: 600px;
             margin: 50px auto;
             padding: 20px;
@@ -23,38 +23,23 @@
         }
 
         h1 {
+            text-align: center;
             color: #333;
-        }
-
-        .username-box {
-            font-size: 20px;
-            font-weight: bold;
-            color: #444;
-            background: #e6e6e6;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 4px;
         }
 
         label {
             font-size: 16px;
             color: #555;
-            display: block;
-            margin-top: 10px;
         }
 
-        input[type="text"],
+        input[type="email"],
         textarea {
-            width: calc(100% - 20px);
+            width: 100%;
             padding: 10px;
-            margin-top: 5px;
-            border-radius: 4px;
+            margin: 10px 0;
             border: 1px solid #ddd;
+            border-radius: 4px;
             font-size: 14px;
-            resize: vertical;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         input[type="submit"] {
@@ -64,94 +49,39 @@
             padding: 10px 20px;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 16px;
             width: 100%;
-            margin-top: 15px;
+            font-size: 16px;
         }
 
         input[type="submit"]:hover {
             background-color: #45a049;
         }
 
-        .success-message {
-            display: none;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 4px;
-        }
-
-        .footer {
+        footer {
+            text-align: center;
             margin-top: 20px;
-            font-size: 12px;
-            color: #333;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>GSOS</h1>
-        <p>اسم المستخدم الخاص بك:</p>
-        <div class="username-box" id="username"></div>
-
-        <form id="message-form">
-            <label for="recipient">أدخل اسم المستخدم المستلم:</label>
-            <input type="text" id="recipient" name="recipient" placeholder="اكتب اسم المستخدم المستلم" required>
+        <h1>إرسال رسالة</h1>
+        <form id="email-form" method="POST" action="send_email.php">
+            <label for="email">أدخل بريدك الإلكتروني:</label>
+            <input type="email" id="email" name="email" placeholder="اكتب بريدك الإلكتروني" required>
 
             <label for="message">أدخل رسالتك:</label>
             <textarea id="message" name="message" placeholder="اكتب رسالتك هنا..." required></textarea>
-            
+
             <input type="submit" value="إرسال الرسالة">
         </form>
-
-        <div class="success-message" id="success-message">تم إرسال الرسالة بنجاح!</div>
     </div>
 
-    <p class="footer">Made in Saudi</p>
-
-    <script>
-        function generateRandomUsername() {
-            const randomNum = Math.floor(1000 + Math.random() * 9000); // رقم عشوائي بين 1000 و 9999
-            return "User_" + randomNum;
-        }
-
-        function setUsername() {
-            let storedUsername = localStorage.getItem("username");
-            if (!storedUsername) {
-                storedUsername = generateRandomUsername();
-                localStorage.setItem("username", storedUsername);
-            }
-            document.getElementById("username").innerText = storedUsername;
-        }
-
-        document.addEventListener("DOMContentLoaded", setUsername);
-
-        document.getElementById("message-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            const sender = localStorage.getItem("username");
-            const recipient = document.getElementById("recipient").value;
-            const message = document.getElementById("message").value;
-
-            const xhr = new XMLHttpRequest();
-            xhr.open("POST", "send_message.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    document.getElementById("success-message").style.display = "block";
-                    setTimeout(() => {
-                        document.getElementById("success-message").style.display = "none";
-                    }, 3000);
-                }
-            };
-            xhr.send("sender=" + sender + "&recipient=" + recipient + "&message=" + encodeURIComponent(message));
-
-            document.getElementById("message").value = "";
-            document.getElementById("recipient").value = "";
-        });
-    </script>
+    <footer>
+        <p>Made in Saudi</p>
+    </footer>
 
 </body>
 </html>
