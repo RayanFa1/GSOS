@@ -3,128 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Smart Operating System</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* تنسيق حقل الرسالة */
-        textarea {
-            width: 100%;
-            height: 150px;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-            resize: vertical;
-            background-color: #f9f9f9;
-            transition: border-color 0.3s ease, background-color 0.3s ease;
-        }
-
-        /* عند التركيز على الحقل */
-        textarea:focus {
-            border-color: #4CAF50;
-            background-color: #e6f7e6;
-        }
-
-        /* إشعار النجاح */
-        #success-message {
-            display: none;
-            background-color: #4CAF50; /* اللون الأخضر */
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            font-size: 18px;
-            z-index: 1000;
-        }
-
-        /* تنسيق الحقول والزر */
-        label {
-            font-size: 18px;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        input[type="email"], input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-        }
-
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-
-        /* تنسيق كلمة "Made in Saudi" */
-        footer p {
-            font-size: 12px; /* تصغير حجم النص */
-            text-align: center;
-            margin-top: 20px;
-            color: #333;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- إشعار النجاح -->
-    <div id="success-message">تم إرسال الرسالة بنجاح!</div>
-
-    <!-- رأس الصفحة -->
-    <header>
-        <div class="header-content">
-            <h1>مرحبا بكم في Global Smart Operating System</h1>
-            <p>يقدم النظام أفضل تجربة للعملاء</p>
-            <p>نظام مرن وسلس</p>
-            <p>نظام يتيح للمستخدم العديد من الأدوات</p>
-        </div>
-    </header>
-
-    <!-- محتوى الصفحة الرئيسية -->
-    <div class="main-content">
-        <p>GSOS System</p>
-
-        <!-- نموذج لإرسال رسالة -->
-        <form id="email-form" action="mailto:asfawaz6071@gmail.com" method="post" enctype="text/plain" onsubmit="showSuccessMessage()">
-            
-            <!-- حقل إدخال البريد الإلكتروني -->
-            <label for="email">أدخل البريد الإلكتروني الذي تريد إرسال الرسالة إليه:</label><br>
-            <input type="email" id="email" name="email" placeholder="اكتب البريد الإلكتروني" required><br><br>
-
-            <!-- حقل الرسالة -->
-            <label for="message">أرسل رسالة:</label><br>
-            <textarea id="message" name="message" placeholder="اكتب رسالتك هنا..." required></textarea><br><br>
-            
-            <!-- زر الإرسال -->
-            <input type="submit" value="إرسال" />
-        </form>
-    </div>
-
-    <!-- كلمة Made in Saudi في أسفل الصفحة -->
-    <footer>
-        <p>Made in Saudi</p>
-    </footer>
-
- <!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>نظام المراسلة</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background: linear-gradient(to bottom, #d2b48c, #fff); /* بني فاتح إلى أبيض */
             margin: 0;
             padding: 0;
             text-align: center;
@@ -156,16 +39,22 @@
         label {
             font-size: 16px;
             color: #555;
+            display: block;
+            margin-top: 10px;
         }
 
+        input[type="text"],
         textarea {
-            width: 100%;
-            height: 100px;
+            width: calc(100% - 20px);
             padding: 10px;
+            margin-top: 5px;
             border-radius: 4px;
             border: 1px solid #ddd;
             font-size: 14px;
             resize: vertical;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         input[type="submit"] {
@@ -177,6 +66,7 @@
             cursor: pointer;
             font-size: 16px;
             width: 100%;
+            margin-top: 15px;
         }
 
         input[type="submit"]:hover {
@@ -191,6 +81,12 @@
             margin: 10px 0;
             border-radius: 4px;
         }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #333;
+        }
     </style>
 </head>
 <body>
@@ -201,14 +97,19 @@
         <div class="username-box" id="username"></div>
 
         <form id="message-form">
-            <label for="message">أدخل رسالتك:</label><br>
-            <textarea id="message" name="message" placeholder="اكتب رسالتك هنا..." required></textarea><br><br>
+            <label for="recipient">أدخل اسم المستخدم المستلم:</label>
+            <input type="text" id="recipient" name="recipient" placeholder="اكتب اسم المستخدم المستلم" required>
+
+            <label for="message">أدخل رسالتك:</label>
+            <textarea id="message" name="message" placeholder="اكتب رسالتك هنا..." required></textarea>
             
             <input type="submit" value="إرسال الرسالة">
         </form>
 
         <div class="success-message" id="success-message">تم إرسال الرسالة بنجاح!</div>
     </div>
+
+    <p class="footer">Made in Saudi</p>
 
     <script>
         function generateRandomUsername() {
@@ -230,7 +131,8 @@
         document.getElementById("message-form").addEventListener("submit", function(event) {
             event.preventDefault();
 
-            const username = localStorage.getItem("username");
+            const sender = localStorage.getItem("username");
+            const recipient = document.getElementById("recipient").value;
             const message = document.getElementById("message").value;
 
             const xhr = new XMLHttpRequest();
@@ -244,47 +146,11 @@
                     }, 3000);
                 }
             };
-            xhr.send("username=" + username + "&message=" + encodeURIComponent(message));
+            xhr.send("sender=" + sender + "&recipient=" + recipient + "&message=" + encodeURIComponent(message));
 
             document.getElementById("message").value = "";
+            document.getElementById("recipient").value = "";
         });
-    </script>
-
-</body>
-</html>
-    
-    <script>
-        // دالة لعرض إشعار النجاح
-        function showSuccessMessage() {
-            document.getElementById("success-message").style.display = "block";
-            setTimeout(function() {
-                document.getElementById("success-message").style.display = "none";
-            }, 3000); // الإشعار سيختفي بعد 3 ثوانٍ
-        }
-
-        // تعديل عملية إرسال البريد لتمكين دعم النصوص العربية
-        const form = document.querySelector('#email-form');
-        form.onsubmit = function (event) {
-            event.preventDefault(); // منع الإرسال العادي للنموذج
-
-            // الحصول على البريد الإلكتروني المدخل
-            const recipientEmail = document.getElementById('email').value;
-
-            // الحصول على قيمة الرسالة المدخلة
-            let message = document.getElementById('message').value;
-
-            // ترميز الرسالة بالعربية في الرابط
-            let encodedMessage = encodeURIComponent(message);
-
-            // بناء رابط الـ mailto مع الرسالة والبريد الإلكتروني
-            let mailtoLink = "mailto:" + recipientEmail + "?subject=رسالة من الموقع&body=" + encodedMessage;
-
-            // فتح الرابط لإرسال الرسالة عبر البريد الإلكتروني
-            window.location.href = mailtoLink;
-
-            // عرض إشعار النجاح
-            showSuccessMessage();
-        };
     </script>
 
 </body>
