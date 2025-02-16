@@ -10,16 +10,41 @@
 
     <!-- رأس الصفحة -->
     <header>
-        <h1>أهلاً وسهلاً بكم في نظام GHA</h1>
+        <div class="header-content">
+            <h1>أهلاً وسهلاً بكم في نظام GHA</h1>
+            <p>نظام مدني سهل ومرن يوفر لك كل ما تحتاجه</p>
+        </div>
     </header>
 
-    <!-- إضافة رابط إلى صفحة "عن النظام" -->
+    <!-- زر الانتقال إلى صفحة "عن النظام" -->
     <div class="navigation">
         <a href="about.html" class="nav-btn">عن النظام</a>
     </div>
 
-    <!-- محتوى الصفحة الرئيسية هنا -->
-    <p>مرحباً بكم في الموقع الرسمي لنظام GHA. نحن هنا لتقديم أفضل الخدمات لكم.</p>
+    <!-- إضافة تأثيرات على المحتوى الرئيسي -->
+    <div class="main-content">
+        <p>نحن في GHA نقدم لك حلولاً مدنية حديثة مع واجهات مستخدم مريحة وسهلة.</p>
+    </div>
+
+    <!-- قائمة التنقل Hamburger -->
+    <div class="hamburger-menu" onclick="toggleMenu()">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
+    <!-- القائمة المنبثقة -->
+    <div class="menu">
+        <a href="index.html" class="menu-item">الصفحة الرئيسية</a>
+        <a href="sms.html" class="menu-item">الرسائل</a>
+        <a href="about.html" class="menu-item">عن النظام</a>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('.menu').classList.toggle('open');
+        }
+    </script>
 
 </body>
 </html>
