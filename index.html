@@ -3,209 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GSOS</title>
+    <title>نظام المراسلة | GSOS</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom, #d2b48c, #fff); /* بني فاتح إلى أبيض */
+            background-color: #f0f0f0;
             margin: 0;
             padding: 0;
+        }
+
+        header {
+            background-color: #3a3a3a;
+            color: white;
             text-align: center;
+            padding: 15px 0;
         }
 
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
+        #messageForm {
+            margin: 20px;
+            padding: 15px;
+            background-color: white;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        h1 {
-            color: #333;
-        }
-
-        .username-box {
-            font-size: 20px;
-            font-weight: bold;
-            color: #444;
-            background: #e6e6e6;
+        #messageForm input, #messageForm textarea {
+            width: 100%;
             padding: 10px;
-            margin: 10px 0;
-            border-radius: 4px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
 
-        label {
-            font-size: 16px;
-            color: #555;
-            display: block;
-            margin-top: 10px;
-        }
-
-        input[type="text"],
-        textarea {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin-top: 5px;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-            font-size: 14px;
-            resize: vertical;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        input[type="submit"] {
+        #messageForm button {
             background-color: #4CAF50;
             color: white;
-            border: none;
             padding: 10px 20px;
-            border-radius: 4px;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
-            width: 100%;
-            margin-top: 15px;
         }
 
-        input[type="submit"]:hover {
+        #messageForm button:hover {
             background-color: #45a049;
         }
 
-        .success-message {
-            display: none;
-            background-color: #4CAF50;
-            color: white;
+        #messages {
+            margin: 20px;
             padding: 10px;
-            margin: 10px 0;
-            border-radius: 4px;
-        }
-
-        .messages-container {
-            margin-top: 20px;
-            padding: 10px;
-            background: #f9f9f9;
+            background-color: white;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            text-align: left;
-            max-height: 200px;
-            overflow-y: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .message {
             padding: 10px;
-            margin-bottom: 5px;
-            background: #e6e6e6;
-            border-radius: 4px;
+            border-bottom: 1px solid #ddd;
         }
 
-        .footer {
-            margin-top: 20px;
-            font-size: 12px;
-            color: #333;
+        .message:last-child {
+            border-bottom: none;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>نظام المراسلة | GSOS</h1>
+    </header>
 
-    <div class="container">
-        <h1>GSOS</h1>
-        <p>اسم المستخدم الخاص بك:</p>
-        <div class="username-box" id="username"></div>
-
-        <form id="message-form">
-            <label for="recipient">أدخل اسم المستخدم المستلم:</label>
-            <input type="text" id="recipient" name="recipient" placeholder="اكتب اسم المستخدم المستلم" required>
-
-            <label for="message">أدخل رسالتك:</label>
-            <textarea id="message" name="message" placeholder="اكتب رسالتك هنا..." required></textarea>
-            
-            <input type="submit" value="إرسال الرسالة">
+    <div id="messageForm">
+        <h2>إرسال رسالة</h2>
+        <form id="messageForm">
+            <input type="text" id="sender" name="sender" placeholder="اسم المرسل" required>
+            <input type="text" id="recipient" name="recipient" placeholder="اسم المستقبل" required>
+            <textarea id="message" name="message" placeholder="اكتب رسالتك" required></textarea>
+            <button type="submit">إرسال الرسالة</button>
         </form>
-
-        <div class="success-message" id="success-message">تم إرسال الرسالة بنجاح!</div>
-
-        <h2>الرسائل الواردة</h2>
-        <div class="messages-container" id="messages-container">
-            <p>لا توجد رسائل بعد.</p>
-        </div>
+        <div id="statusMessage"></div>
     </div>
 
-    <p class="footer">Made in Saudi</p>
+    <div id="messages">
+        <h2>الرسائل المستلمة</h2>
+        <div id="messageList"></div>
+    </div>
+
+    <footer>
+        <p>Made in Saudi</p>
+    </footer>
 
     <script>
-        function generateRandomUsername() {
-            const randomNum = Math.floor(1000 + Math.random() * 9000);
-            return "User_" + randomNum;
-        }
+        // إرسال الرسالة عبر Ajax
+        document.getElementById("messageForm").addEventListener("submit", function(e) {
+            e.preventDefault();
 
-        function setUsername() {
-            let storedUsername = localStorage.getItem("username");
-            if (!storedUsername) {
-                storedUsername = generateRandomUsername();
-                localStorage.setItem("username", storedUsername);
-            }
-            document.getElementById("username").innerText = storedUsername;
-        }
+            var formData = new FormData();
+            formData.append("sender", document.getElementById("sender").value);
+            formData.append("recipient", document.getElementById("recipient").value);
+            formData.append("message", document.getElementById("message").value);
 
-        document.addEventListener("DOMContentLoaded", function () {
-            setUsername();
-            loadMessages();
+            fetch("send_message.php", {
+                method: "POST",
+                body: formData
+            }).then(response => response.text())
+            .then(data => {
+                document.getElementById("statusMessage").innerText = data;
+                loadMessages(); // تحميل الرسائل الجديدة
+            });
         });
 
-        document.getElementById("message-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            const sender = localStorage.getItem("username");
-            const recipient = document.getElementById("recipient").value;
-            const message = document.getElementById("message").value;
-
-            const xhr = new XMLHttpRequest();
-            xhr.open("POST", "send_message.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    document.getElementById("success-message").style.display = "block";
-                    setTimeout(() => {
-                        document.getElementById("success-message").style.display = "none";
-                    }, 3000);
-                }
-            };
-            xhr.send("sender=" + sender + "&recipient=" + recipient + "&message=" + encodeURIComponent(message));
-
-            document.getElementById("message").value = "";
-            document.getElementById("recipient").value = "";
-        });
-
+        // تحميل الرسائل عند تحميل الصفحة
         function loadMessages() {
-            const username = localStorage.getItem("username");
+            var user = document.getElementById("recipient").value;
 
-            const xhr = new XMLHttpRequest();
-            xhr.open("GET", "get_messages.php?user=" + username, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    const messagesContainer = document.getElementById("messages-container");
-                    messagesContainer.innerHTML = "";
-
-                    const messages = JSON.parse(xhr.responseText);
-                    if (messages.length === 0) {
-                        messagesContainer.innerHTML = "<p>لا توجد رسائل بعد.</p>";
-                    } else {
-                        messages.forEach(msg => {
-                            const msgElement = document.createElement("div");
-                            msgElement.classList.add("message");
-                            msgElement.innerHTML = `<strong>${msg.sender}:</strong> ${msg.message}`;
-                            messagesContainer.appendChild(msgElement);
-                        });
-                    }
-                }
-            };
-            xhr.send();
+            fetch(`get_messages.php?user=${user}`)
+            .then(response => response.json())
+            .then(messages => {
+                var messageList = document.getElementById("messageList");
+                messageList.innerHTML = "";  // إفراغ الرسائل القديمة
+                messages.forEach(message => {
+                    messageList.innerHTML += `<div class="message"><strong>${message.sender}</strong>: ${message.message}</div>`;
+                });
+            });
         }
 
-        setInterval(loadMessages, 5000);
+        window.onload = loadMessages;
     </script>
-
 </body>
 </html>
