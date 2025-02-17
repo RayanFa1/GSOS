@@ -8,18 +8,6 @@
 </head>
 <body>
 
-    <!-- رأس الصفحة -->
-    <header>
-        <div class="header-content">
-            <h1>Welcome to GSOS</h1>
-        </div>
-    </header>
-
-    <!-- رقم التعريف -->
-    <div class="user-id-container">
-        <p>رقم التعريف الخاص بك: <span id="user-id"></span></p>
-    </div>
-
     <!-- زر الهامبرغر -->
     <div class="hamburger" id="hamburger">
         <div></div>
@@ -28,22 +16,30 @@
     </div>
 
     <!-- قائمة التنقل -->
-    <div class="menu" id="menu">
-        <a href="about.html">الانتقال إلى حول</a>
+    <nav class="menu" id="menu">
+        <a href="about.html">حول</a>
+    </nav>
+
+    <!-- محتوى الصفحة -->
+    <div class="container">
+        <h1>Welcome to GSOS</h1>
+
+        <!-- رقم التعريف -->
+        <p class="user-id">رقم التعريف الخاص بك: <span id="user-id"></span></p>
+
+        <!-- نموذج إرسال الرسالة -->
+        <div class="message-container">
+            <h2>إرسال رسالة عبر البريد الإلكتروني</h2>
+            <form id="message-form">
+                <input type="email" id="email" placeholder="البريد الإلكتروني للمرسل إليه" required>
+                <textarea id="message" placeholder="اكتب رسالتك هنا" required></textarea>
+                <button type="submit">إرسال</button>
+            </form>
+            <p id="success-message" class="hidden">تم إرسال الرسالة بنجاح</p>
+        </div>
     </div>
 
-    <!-- نموذج إرسال الرسائل -->
-    <div class="message-container">
-        <h2>إرسال رسالة عبر البريد الإلكتروني</h2>
-        <form id="message-form">
-            <input type="email" id="email" placeholder="البريد الإلكتروني للمرسل إليه" required>
-            <textarea id="message" placeholder="اكتب رسالتك هنا" required></textarea>
-            <button type="submit">إرسال</button>
-        </form>
-        <p id="success-message" class="hidden">تم إرسال الرسالة بنجاح</p>
-    </div>
-
-    <!-- كلمة Made in Saudi -->
+    <!-- الفوتر -->
     <footer>
         <p>Made in Saudi</p>
     </footer>
@@ -67,7 +63,7 @@
             menu.classList.toggle('active');
         });
 
-        // إرسال الرسالة عبر البريد
+        // إرسال الرسالة
         document.getElementById("message-form").addEventListener("submit", function(event) {
             event.preventDefault();
             const email = document.getElementById("email").value;
@@ -75,10 +71,11 @@
             
             window.location.href = `mailto:${email}?subject=رسالة من GSOS&body=${encodeURIComponent(message)}`;
 
-            // عرض رسالة نجاح
-            document.getElementById("success-message").classList.remove("hidden");
+            // عرض رسالة النجاح لفترة قصيرة
+            const successMessage = document.getElementById("success-message");
+            successMessage.classList.remove("hidden");
             setTimeout(() => {
-                document.getElementById("success-message").classList.add("hidden");
+                successMessage.classList.add("hidden");
             }, 3000);
         });
     </script>
