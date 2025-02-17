@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GSOS</title>
+    <title>GSOS - نظام المدونات</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,9 +13,13 @@
         <h1>General System of Self-Operation and Protection</h1>
 
         <!-- تسجيل الدخول برقم التعريف -->
-        <h2>تسجيل الدخول برقم التعريف</h2>
-        <input type="number" id="userIdInput" placeholder="أدخل رقم التعريف">
-        <button onclick="login()">تسجيل الدخول</button>
+        <div class="login-container">
+            <label for="userIdInput">🔑 أدخل رقم التعريف الخاص بك:</label>
+            <div class="input-group">
+                <input type="number" id="userIdInput" placeholder="مثال: 123456">
+                <button onclick="login()">تسجيل الدخول</button>
+            </div>
+        </div>
 
         <!-- عرض رقم التعريف الحالي -->
         <p class="user-id">رقم التعريف الحالي: <span id="currentUserId"></span></p>
@@ -27,7 +31,7 @@
         </div>
 
         <!-- قائمة المدونات المحفوظة -->
-        <h2>مدونات المستخدم:</h2>
+        <h2>📜 مدونات المستخدم:</h2>
         <ul id="blogList"></ul>
     </div>
 
