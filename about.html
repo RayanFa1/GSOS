@@ -5,67 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>حول - GSOS</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            background-color: #f3f3f3;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-
-        .container {
-            margin-top: 50px;
-            padding: 20px;
-        }
-
-        h1 {
-            font-size: 24px;
-            color: #333;
-        }
-
-        p {
-            font-size: 18px;
-            color: #555;
-            max-width: 600px;
-            margin: 20px auto;
-            line-height: 1.6;
-        }
-
-        .back-button {
-            background-color: #008CBA;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
-            display: inline-block;
-            margin-top: 20px;
-        }
-
-        .back-button:hover {
-            background-color: #005f73;
-        }
-
-        footer p {
-            font-size: 12px;
-            text-align: center;
-            color: white;
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>حول GSOS</h1>
-        <p>شركة GSOS شركة محلية تهدف إلى تنمية آمان المؤسسات والمنشآت.</p>
-        <a href="index.html" class="back-button">الرجوع إلى الصفحة الرئيسية</a>
+    <!-- رأس الصفحة -->
+    <header>
+        <div class="header-content">
+            <h1>حول GSOS</h1>
+        </div>
+    </header>
+
+    <!-- زر الهامبرغر -->
+    <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
     </div>
 
+    <!-- قائمة التنقل -->
+    <div class="menu" id="menu">
+        <a href="index.html">الرجوع إلى الصفحة الرئيسية</a>
+    </div>
+
+    <!-- محتوى الصفحة -->
+    <div class="main-content">
+        <p>شركة GSOS شركة محلية تهدف إلى تنمية آمان المؤسسات والمنشآت.</p>
+    </div>
+
+    <!-- كلمة Made in Saudi -->
     <footer>
         <p>Made in Saudi</p>
     </footer>
+
+    <script>
+        // عند النقر على زر الهامبرغر
+        const hamburger = document.getElementById('hamburger');
+        const menu = document.getElementById('menu');
+
+        hamburger.addEventListener('click', function() {
+            menu.classList.toggle('active');
+        });
+    </script>
 
 </body>
 </html>
