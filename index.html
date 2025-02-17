@@ -3,167 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Smart Operating System</title>
+    <title>GSOS</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* خلفية الصفحة */
-        body {
-            background-color: #f3f3f3;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        /* تنسيق حقل الرسالة */
-        textarea {
-            width: 100%;
-            height: 100px;
-            padding: 8px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            font-size: 14px;
-            resize: vertical;
-            background-color: #f9f9f9;
-            transition: border-color 0.3s ease, background-color 0.3s ease;
-        }
-
-        /* عند التركيز على الحقل */
-        textarea:focus {
-            border-color: #4CAF50;
-            background-color: #e6f7e6;
-        }
-
-        /* إشعار النجاح */
-        #success-message {
-            display: none;
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            font-size: 16px;
-            z-index: 1000;
-        }
-
-        /* تنسيق الحقول والزر */
-        label {
-            font-size: 14px;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        input[type="email"], input[type="submit"] {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 8px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-size: 14px;
-        }
-<div class="user-id-container">
-    <p>رقم التعريف الخاص بك: <span id="user-id"></span></p>
-</div>
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            cursor: pointer;
-        } 
-        
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-
-        /* تنسيق كلمة Made in Saudi باللون الأبيض */
-        footer p {
-            font-size: 12px;
-            text-align: center;
-            color: white;
-            margin-top: 20px;
-        }
-
-        /* محتوى الصفحة */
-        .main-content {
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        /* تنسيق زر الهامبرغر في الزاوية العلوية اليمنى */
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            flex-direction: column;
-            width: 30px;
-            height: 30px;
-            justify-content: space-between;
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1001;
-        }
-
-        .hamburger div {
-            width: 100%;
-            height: 5px;
-            background-color: #333;
-            border-radius: 5px;
-        }
-
-        .about-button {
-            background-color: #008CBA;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 10px; /* تعديل المسافة العلوية هنا */
-            font-size: 16px;
-        }
-
-        .about-button:hover {
-            background-color: #005f73;
-        }
-
-        /* عندما يكون الزر هامبرغر مرئياً */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-        }
-
-        /* التنسيق عند فتح القائمة */
-        .menu {
-            display: none;
-            flex-direction: column;
-            text-align: center;
-            background-color: #333;
-            position: absolute;
-            top: 50px;
-            right: 0;
-            width: 100%;
-        }
-
-        .menu a {
-            color: white;
-            padding: 15px;
-            text-decoration: none;
-        }
-
-        .menu a:hover {
-            background-color: #555;
-        }
-
-        /* عند عرض القائمة */
-        .menu.active {
-            display: flex;
-        }
-    </style>
 </head>
 <body>
-
-    <!-- إشعار النجاح -->
-    <div id="success-message">تم إرسال الرسالة بنجاح!</div>
 
     <!-- رأس الصفحة -->
     <header>
@@ -171,6 +14,11 @@
             <h1>Welcome to GSOS</h1>
         </div>
     </header>
+
+    <!-- رقم التعريف -->
+    <div class="user-id-container">
+        <p>رقم التعريف الخاص بك: <span id="user-id"></span></p>
+    </div>
 
     <!-- زر الهامبرغر -->
     <div class="hamburger" id="hamburger">
@@ -181,89 +29,35 @@
 
     <!-- قائمة التنقل -->
     <div class="menu" id="menu">
-        <a href="about.html">الانتقال إلى (حول)</a>
+        <a href="about.html">الانتقال إلى حول</a>
     </div>
 
-    <!-- محتوى الصفحة الرئيسية -->
-    <div class="main-content">
-        <p>GSOS System</p>
-
-        <!-- نموذج لإرسال رسالة -->
-        <form id="email-form" action="mailto:asfawaz6071@gmail.com" method="post" enctype="text/plain" onsubmit="showSuccessMessage()">
-            
-            <!-- حقل إدخال البريد الإلكتروني -->
-            <label for="email">أدخل البريد الإلكتروني الذي تريد إرسال الرسالة إليه:</label><br>
-            <input type="email" id="email" name="email" placeholder="اكتب البريد الإلكتروني" required><br><br>
-
-            <!-- حقل الرسالة -->
-            <label for="message">أرسل رسالة:</label><br>
-            <textarea id="message" name="message" placeholder="اكتب رسالتك هنا..." required></textarea><br><br>
-            
-            <!-- زر الإرسال -->
-            <input type="submit" value="إرسال" />
-        </form>
-    </div>
-
-    <!-- كلمة Made in Saudi في أسفل الصفحة -->
+    <!-- كلمة Made in Saudi -->
     <footer>
         <p>Made in Saudi</p>
     </footer>
 
     <script>
-        // دالة لعرض إشعار النجاح
-        function showSuccessMessage() {
-            document.getElementById("success-message").style.display = "block";
-            setTimeout(function() {
-                document.getElementById("success-message").style.display = "none";
-            }, 3000); // الإشعار سيختفي بعد 3 ثوانٍ
+        // توليد رقم تعريف ثابت لكل مستخدم
+        function generateUserId() {
+            let userId = localStorage.getItem("user-id");
+
+            if (!userId) {
+                userId = Math.floor(100000 + Math.random() * 900000); // إنشاء رقم عشوائي مكون من 6 أرقام
+                localStorage.setItem("user-id", userId);
+            }
+
+            document.getElementById("user-id").textContent = userId;
         }
 
-        // تعديل عملية إرسال البريد لتمكين دعم النصوص العربية
-        const form = document.querySelector('#email-form');
-        form.onsubmit = function (event) {
-            event.preventDefault(); // منع الإرسال العادي للنموذج
+        // تشغيل الوظيفة عند تحميل الصفحة
+        window.onload = generateUserId;
 
-            // الحصول على البريد الإلكتروني المدخل
-            const recipientEmail = document.getElementById('email').value;
-
-            // الحصول على قيمة الرسالة المدخلة
-            let message = document.getElementById('message').value;
-
-            // ترميز الرسالة بالعربية في الرابط
-            let encodedMessage = encodeURIComponent(message);
-
-            // بناء رابط الـ mailto مع الرسالة والبريد الإلكتروني
-            let mailtoLink = "mailto:" + recipientEmail + "?subject=رسالة من الموقع&body=" + encodedMessage;
-
-            // فتح الرابط لإرسال الرسالة عبر البريد الإلكتروني
-            window.location.href = mailtoLink;
-
-            // عرض إشعار النجاح
-            showSuccessMessage();
-        };
-<script>
-    function generateUserId() {
-        // تحقق مما إذا كان رقم التعريف موجودًا في localStorage
-        let userId = localStorage.getItem("user-id");
-
-        // إذا لم يكن موجودًا، قم بإنشائه وحفظه
-        if (!userId) {
-            userId = Math.floor(100000 + Math.random() * 900000); // إنشاء رقم عشوائي مكون من 6 أرقام
-            localStorage.setItem("user-id", userId);
-        }
-
-        // عرض الرقم في الصفحة
-        document.getElementById("user-id").textContent = userId;
-    }
-
-    // تشغيل الوظيفة عند تحميل الصفحة
-    window.onload = generateUserId;
-</script>
-        // عند النقر على زر الهامبرغر
+        // التحكم في قائمة الهامبرغر
         const hamburger = document.getElementById('hamburger');
         const menu = document.getElementById('menu');
 
-        hamburger.addEventListener('click', function() {
+        hamburger.addEventListener('click', function () {
             menu.classList.toggle('active');
         });
     </script>
