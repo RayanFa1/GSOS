@@ -23,40 +23,13 @@ function saveBlog() {
     loadBlogs(); // تحديث القائمة
 }
 
-// تحميل المدونات الخاصة بالمستخدم الحالي
+// تحميل المدونات الخاصة بالمستخدم الحالي فقط
 function loadBlogs() {
     let userId = localStorage.getItem("userId");
     let blogs = JSON.parse(localStorage.getItem(`blogs_${userId}`)) || [];
-    displayBlogs(blogs, "📜 مدوناتك المحفوظة:", true);
-}
-
-// عرض مدونات مستخدم آخر دون تغيير الحساب
-function viewOtherUserBlogs() {
-    let otherUserId = document.getElementById("otherUserIdInput").value.trim();
     
-    if (otherUserId === "") {
-        alert("يرجى إدخال رقم تعريف صحيح!");
-        return;
-    }
-
-    let otherUserBlogs = JSON.parse(localStorage.getItem(`blogs_${otherUserId}`)); // محاولة جلب المدونات
-
-    if (!otherUserBlogs || otherUserBlogs.length === 0) {
-        document.getElementById("blogList").innerHTML = "<p>🚫 لا توجد مدونات لهذا المستخدم.</p>";
-        document.getElementById("blogListTitle").textContent = `📜 مدونات المستخدم ${otherUserId}:`;
-        return;
-    }
-
-    displayBlogs(otherUserBlogs, `📜 مدونات المستخدم ${otherUserId}:`, false);
-}
-
-// دالة لعرض المدونات وتحديث العنوان مع إضافة زر حذف للمستخدم الحالي فقط
-function displayBlogs(blogs, title, allowDelete) {
     let blogList = document.getElementById("blogList");
-    let blogListTitle = document.getElementById("blogListTitle");
-
     blogList.innerHTML = ""; // مسح القائمة قبل إعادة التحميل
-    blogListTitle.textContent = title; // تحديث العنوان
 
     if (blogs.length === 0) {
         blogList.innerHTML = "<p>🚫 لا توجد مدونات متاحة.</p>";
@@ -65,17 +38,15 @@ function displayBlogs(blogs, title, allowDelete) {
             let li = document.createElement("li");
             li.textContent = blog;
 
-            // إضافة زر الحذف إذا كان المستخدم الحالي هو الذي يشاهد مدوناته الخاصة
-            if (allowDelete) {
-                let deleteBtn = document.createElement("button");
-                deleteBtn.textContent = "🗑 حذف";
-                deleteBtn.className = "delete-btn";
-                deleteBtn.onclick = function () {
-                    deleteBlog(index);
-                };
-                li.appendChild(deleteBtn);
-            }
+            // إضافة زر الحذف
+            let deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "🗑 حذف";
+            deleteBtn.className = "delete-btn";
+            deleteBtn.onclick = function () {
+                deleteBlog(index);
+            };
 
+            li.appendChild(deleteBtn);
             blogList.appendChild(li);
         });
     }
