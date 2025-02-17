@@ -1,92 +1,134 @@
-/* إعدادات عامة للصفحة */
+/* تنسيق عام */
 body {
-    background-color: #f4f4f4; /* اللون الأبيض */
-    color: #333;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Arial, sans-serif;
+    background: #f5e1d2; /* بني فاتح */
     margin: 0;
     padding: 0;
-    position: relative;
+    text-align: center;
 }
 
 /* رأس الصفحة */
 header {
-    background-color: #D1B28C; /* اللون البني الفاتح */
-    color: #fff;
-    padding: 40px 20px;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
-
-header h1 {
-    margin: 0;
-    font-size: 36px;
-    font-weight: bold;
-}
-
-header p {
-    font-size: 18px;
-    margin-top: 10px;
-}
-
-/* محتوى الصفحة الرئيسية */
-.main-content {
-    text-align: center;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #fff;
-    max-width: 800px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.main-content p {
-    font-size: 20px;
-}
-.back-button-container {
-    text-align: center;
-    margin-top: 50px;
-    margin-bottom: 30px;
-}
-
-.back-button {
-    background: linear-gradient(135deg, #8b5e3b, #c9a78b); /* تدرج لوني جذاب */
+    background: #8b5e3b; /* بني غامق */
     color: white;
-    padding: 12px 25px;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    display: inline-block;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    padding: 20px 0;
 }
 
+.header-content h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* رقم التعريف */
 .user-id-container {
-    text-align: center;
     font-size: 18px;
     font-weight: bold;
     color: #333;
-    margin-top: 20px;
     background: #f3f3f3;
     padding: 10px;
     border-radius: 8px;
     display: inline-block;
+    margin-top: 20px;
 }
 
-.back-button:hover {
-    background: linear-gradient(135deg, #6d4229, #a97e5a);
-    transform: scale(1.05);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+/* زر الهامبرغر */
+.hamburger {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
 }
-/* كلمة Made in Saudi في أسفل الصفحة */
+
+.hamburger div {
+    background: #333;
+    height: 4px;
+    margin: 5px 0;
+    border-radius: 4px;
+}
+
+/* قائمة الهامبرغر */
+.menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.menu a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #333;
+}
+
+.menu.active {
+    display: block;
+}
+
+/* نموذج إرسال الرسائل */
+.message-container {
+    margin: 30px auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.message-container h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.message-container input,
+.message-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.message-container button {
+    width: 100%;
+    padding: 10px;
+    background: #8b5e3b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.message-container button:hover {
+    background: #734b2e;
+}
+
+/* رسالة النجاح */
+.hidden {
+    display: none;
+}
+
+#success-message {
+    color: green;
+    margin-top: 10px;
+}
+
+/* الفوتر */
 footer {
     position: fixed;
-    bottom: 0;
+    bottom: 10px;
     width: 100%;
-    background-color: #333; /* اللون الأسود */
-    color: #fff;
     text-align: center;
-    padding: 10px 0;
-    font-size: 18px;
+}
+
+footer p {
+    color: white;
+    font-size: 14px;
 }
