@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // توليد رقم تعريف خاص للمستخدم إذا لم يكن موجودًا مسبقًا
+    // توليد رقم تعريف خاص بالمستخدم إذا لم يكن موجودًا مسبقًا
     if (!localStorage.getItem("userId")) {
         localStorage.setItem("userId", Math.floor(100000 + Math.random() * 900000));
     }
@@ -41,8 +41,9 @@ function viewOtherUserBlogs() {
 
     let otherUserBlogs = JSON.parse(localStorage.getItem(`blogs_${otherUserId}`)); // محاولة جلب المدونات
 
-    if (!otherUserBlogs) {
-        alert("لا توجد مدونات لهذا المستخدم!");
+    if (!otherUserBlogs || otherUserBlogs.length === 0) {
+        document.getElementById("blogList").innerHTML = "<p>🚫 لا توجد مدونات لهذا المستخدم.</p>";
+        document.getElementById("blogListTitle").textContent = `📜 مدونات المستخدم ${otherUserId}:`;
         return;
     }
 
@@ -58,7 +59,7 @@ function displayBlogs(blogs, title, allowDelete) {
     blogListTitle.textContent = title; // تحديث العنوان
 
     if (blogs.length === 0) {
-        blogList.innerHTML = "<p>لا توجد مدونات متاحة.</p>";
+        blogList.innerHTML = "<p>🚫 لا توجد مدونات متاحة.</p>";
     } else {
         blogs.forEach((blog, index) => {
             let li = document.createElement("li");
