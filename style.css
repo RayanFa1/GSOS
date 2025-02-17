@@ -45,7 +45,24 @@ input, textarea {
     background: #1E3A5F; /* أزرق داكن فاتح */
     color: white;
 }
+/* تصميم زر الحذف ليكون أسفل الملاحظة */
+.delete-btn {
+    display: block; /* جعله يأخذ سطرًا كاملاً */
+    width: 100%; /* جعله بنفس عرض الملاحظة */
+    margin-top: 10px; /* ترك مسافة بينه وبين الملاحظة */
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
 
+.delete-btn:hover {
+    background-color: darkred;
+}
 /* ضبط حجم مربع النص */
 textarea {
     height: 100px;
