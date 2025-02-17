@@ -62,6 +62,18 @@ header p {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
+.user-id-container {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 20px;
+    background: #f3f3f3;
+    padding: 10px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
 .back-button:hover {
     background: linear-gradient(135deg, #6d4229, #a97e5a);
     transform: scale(1.05);
