@@ -1,31 +1,32 @@
-/* تعيين الخلفية إلى اللون الأزرق الغامق */
+/* ضبط الخلفية */
 body {
     font-family: Arial, sans-serif;
-    background-color: #0A1931;
+    background-color: #0A1931; /* أزرق غامق */
     color: white;
     text-align: center;
     margin: 0;
     padding: 20px;
 }
 
-/* تنسيق العنوان الرئيسي */
-.title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
+/* تنسيق الحاوية */
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
 }
 
 /* رقم المستخدم */
 .user-id {
     font-size: 18px;
     margin-bottom: 20px;
+    font-weight: bold;
 }
 
-/* صندوق إدخال المدونة */
+/* حقل إدخال المدونة */
 .blog-container {
-    margin: 20px auto;
-    width: 80%;
-    max-width: 500px;
+    margin: 20px 0;
 }
 
 textarea {
@@ -39,6 +40,7 @@ textarea {
     outline: none;
 }
 
+/* زر الحفظ */
 button {
     margin-top: 10px;
     padding: 10px 15px;
@@ -48,6 +50,7 @@ button {
     font-weight: bold;
     cursor: pointer;
     border-radius: 5px;
+    width: 100%;
 }
 
 button:hover {
@@ -55,9 +58,9 @@ button:hover {
 }
 
 /* قائمة المدونات */
-.subtitle {
-    font-size: 20px;
+h2 {
     margin-top: 30px;
+    font-size: 20px;
 }
 
 #blogList {
@@ -68,8 +71,6 @@ button:hover {
 #blogList li {
     background: #1E3A5F;
     padding: 10px;
-    margin: 5px auto;
-    width: 80%;
-    max-width: 500px;
+    margin: 5px 0;
     border-radius: 5px;
 }
