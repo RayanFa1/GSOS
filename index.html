@@ -12,26 +12,26 @@
         <!-- العنوان الرئيسي -->
         <h1>General System of Self-Operation and Protection</h1>
 
-        <!-- تسجيل الدخول برقم التعريف -->
-        <div class="login-container">
-            <label for="userIdInput">🔑 أدخل رقم التعريف الخاص بك:</label>
+        <!-- رقم التعريف الخاص بالمستخدم -->
+        <p class="user-id">رقم التعريف الخاص بك: <span id="currentUserId"></span></p>
+
+        <!-- حقل إدخال رقم تعريف آخر لعرض مدوناته -->
+        <div class="view-profile-container">
+            <label for="otherUserIdInput">👀 أدخل رقم تعريف مستخدم آخر لعرض مدوناته:</label>
             <div class="input-group">
-                <input type="number" id="userIdInput" placeholder="مثال: 123456">
-                <button onclick="login()">تسجيل الدخول</button>
+                <input type="number" id="otherUserIdInput" placeholder="مثال: 123456">
+                <button onclick="viewOtherUserBlogs()">عرض المدونات</button>
             </div>
         </div>
 
-        <!-- عرض رقم التعريف الحالي -->
-        <p class="user-id">رقم التعريف الحالي: <span id="currentUserId"></span></p>
-
-        <!-- حقل إدخال المدونة -->
+        <!-- حقل إدخال المدونة للمستخدم الحالي -->
         <div class="blog-container">
             <textarea id="blogInput" placeholder="اكتب مدونتك هنا..."></textarea>
             <button onclick="saveBlog()">حفظ المدونة</button>
         </div>
 
         <!-- قائمة المدونات المحفوظة -->
-        <h2>📜 مدونات المستخدم:</h2>
+        <h2 id="blogListTitle">📜 مدوناتك المحفوظة:</h2>
         <ul id="blogList"></ul>
     </div>
 
