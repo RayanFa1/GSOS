@@ -241,7 +241,24 @@
             // عرض إشعار النجاح
             showSuccessMessage();
         };
+<script>
+    function generateUserId() {
+        // تحقق مما إذا كان رقم التعريف موجودًا في localStorage
+        let userId = localStorage.getItem("user-id");
 
+        // إذا لم يكن موجودًا، قم بإنشائه وحفظه
+        if (!userId) {
+            userId = Math.floor(100000 + Math.random() * 900000); // إنشاء رقم عشوائي مكون من 6 أرقام
+            localStorage.setItem("user-id", userId);
+        }
+
+        // عرض الرقم في الصفحة
+        document.getElementById("user-id").textContent = userId;
+    }
+
+    // تشغيل الوظيفة عند تحميل الصفحة
+    window.onload = generateUserId;
+</script>
         // عند النقر على زر الهامبرغر
         const hamburger = document.getElementById('hamburger');
         const menu = document.getElementById('menu');
