@@ -32,6 +32,17 @@
         <a href="about.html">الانتقال إلى حول</a>
     </div>
 
+    <!-- نموذج إرسال الرسائل -->
+    <div class="message-container">
+        <h2>إرسال رسالة عبر البريد الإلكتروني</h2>
+        <form id="message-form">
+            <input type="email" id="email" placeholder="البريد الإلكتروني للمرسل إليه" required>
+            <textarea id="message" placeholder="اكتب رسالتك هنا" required></textarea>
+            <button type="submit">إرسال</button>
+        </form>
+        <p id="success-message" class="hidden">تم إرسال الرسالة بنجاح</p>
+    </div>
+
     <!-- كلمة Made in Saudi -->
     <footer>
         <p>Made in Saudi</p>
@@ -41,24 +52,34 @@
         // توليد رقم تعريف ثابت لكل مستخدم
         function generateUserId() {
             let userId = localStorage.getItem("user-id");
-
             if (!userId) {
-                userId = Math.floor(100000 + Math.random() * 900000); // إنشاء رقم عشوائي مكون من 6 أرقام
+                userId = Math.floor(100000 + Math.random() * 900000);
                 localStorage.setItem("user-id", userId);
             }
-
             document.getElementById("user-id").textContent = userId;
         }
-
-        // تشغيل الوظيفة عند تحميل الصفحة
         window.onload = generateUserId;
 
         // التحكم في قائمة الهامبرغر
         const hamburger = document.getElementById('hamburger');
         const menu = document.getElementById('menu');
-
         hamburger.addEventListener('click', function () {
             menu.classList.toggle('active');
+        });
+
+        // إرسال الرسالة عبر البريد
+        document.getElementById("message-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+            
+            window.location.href = `mailto:${email}?subject=رسالة من GSOS&body=${encodeURIComponent(message)}`;
+
+            // عرض رسالة نجاح
+            document.getElementById("success-message").classList.remove("hidden");
+            setTimeout(() => {
+                document.getElementById("success-message").classList.add("hidden");
+            }, 3000);
         });
     </script>
 
