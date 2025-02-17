@@ -1,25 +1,36 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const menu = document.getElementById("menu");
-    const hamburger = document.getElementById("hamburger");
+    // توليد رقم تعريف خاص للمستخدم إذا لم يكن موجودًا مسبقًا
+    if (!localStorage.getItem("userId")) {
+        localStorage.setItem("userId", Math.floor(100000 + Math.random() * 900000));
+    }
+    document.getElementById("userId").textContent = localStorage.getItem("userId");
 
-    // فتح وإغلاق القائمة عند النقر على زر الهامبرغر
-    hamburger.addEventListener("click", function () {
-        menu.classList.toggle("active");
-    });
-
-    // إرسال الرسالة عبر البريد الإلكتروني
-    document.getElementById("message-form").addEventListener("submit", function (event) {
-        event.preventDefault();
-        const email = document.getElementById("email").value;
-        const message = document.getElementById("message").value;
-
-        window.location.href = `mailto:${email}?subject=رسالة من GSOS&body=${encodeURIComponent(message)}`;
-
-        // عرض رسالة النجاح لفترة قصيرة
-        const successMessage = document.getElementById("success-message");
-        successMessage.style.display = "block";
-        setTimeout(() => {
-            successMessage.style.display = "none";
-        }, 3000);
-    });
+    // تحميل المدونات المحفوظة عند تشغيل الصفحة
+    loadBlogs();
 });
+
+// حفظ المدونة في Local Storage
+function saveBlog() {
+    let blogText = document.getElementById("blogInput").value.trim();
+    if (blogText === "") return;
+
+    let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+    blogs.push(blogText);
+    localStorage.setItem("blogs", JSON.stringify(blogs));
+
+    document.getElementById("blogInput").value = ""; // مسح الحقل بعد الحفظ
+    loadBlogs(); // تحديث القائمة
+}
+
+// تحميل المدونات المحفوظة وعرضها في القائمة
+function loadBlogs() {
+    let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+    let blogList = document.getElementById("blogList");
+    blogList.innerHTML = ""; // مسح القائمة قبل إعادة التحميل
+
+    blogs.forEach(blog => {
+        let li = document.createElement("li");
+        li.textContent = blog;
+        blogList.appendChild(li);
+    });
+}
