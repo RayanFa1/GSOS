@@ -1,101 +1,55 @@
-/* تنسيق عام */
+/* تعيين خط الأساس للصفحة */
 body {
     font-family: Arial, sans-serif;
-    background: #f5e1d2; /* بني فاتح */
     margin: 0;
     padding: 0;
+    background: #f5ebe0; /* لون الخلفية بني فاتح */
     text-align: center;
 }
 
-/* زر الهامبرغر */
-.hamburger {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-    width: 30px;
-    height: 25px;
-}
-
-.hamburger div {
-    background: #333;
-    height: 4px;
-    margin: 5px 0;
-    border-radius: 4px;
-}
-
-/* قائمة الهامبرغر */
-.menu {
-    display: none;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    padding: 10px;
-}
-
-.menu a {
-    display: block;
-    padding: 10px 20px;
-    text-decoration: none;
+/* العنوان الرئيسي */
+h1 {
     color: #333;
-}
-
-.menu.active {
-    display: block;
-}
-
-/* الحاوية الرئيسية */
-.container {
-    margin-top: 100px;
+    margin-top: 20px;
+    font-size: 28px;
 }
 
 /* رقم التعريف */
-.user-id {
+#user-id {
     font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    background: #fff;
-    padding: 10px;
-    border-radius: 8px;
-    display: inline-block;
-    margin-top: 20px;
+    color: #555;
+    margin-bottom: 20px;
 }
 
-/* نموذج إرسال الرسائل */
+/* تنسيق نموذج إرسال الرسائل */
 .message-container {
-    margin: 30px auto;
-    padding: 20px;
-    width: 90%;
-    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background: white;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-}
-
-.message-container h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
+    width: 90%;
+    max-width: 400px;
+    margin: 20px auto;
 }
 
 .message-container input,
 .message-container textarea {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 12px;
+    margin-bottom: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+    outline: none;
 }
 
-/* زر الإرسال */
 .message-container button {
     width: 100%;
     padding: 12px;
-    background: #8b5e3b;
+    background: #8b5e3b; /* لون بني جميل */
     color: white;
     border: none;
     border-radius: 5px;
@@ -105,14 +59,10 @@ body {
 }
 
 .message-container button:hover {
-    background: #734b2e;
+    background: #734b2e; /* لون أغمق عند التمرير */
 }
 
-/* رسالة النجاح */
-.hidden {
-    display: none;
-}
-
+/* تحسين رسالة النجاح */
 #success-message {
     color: white;
     background: green;
@@ -120,17 +70,70 @@ body {
     border-radius: 5px;
     display: inline-block;
     margin-top: 10px;
+    display: none;
 }
 
-/* الفوتر */
+/* تحسين الفوتر */
 footer {
     position: fixed;
-    bottom: 10px;
+    bottom: 0;
     width: 100%;
+    background: #333;
+    padding: 10px;
     text-align: center;
 }
 
 footer p {
     color: white;
     font-size: 14px;
+}
+
+/* زر الهامبرغر */
+.hamburger {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hamburger div {
+    width: 100%;
+    height: 4px;
+    background: black;
+    border-radius: 2px;
+}
+
+/* قائمة الهامبرغر */
+.menu {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px;
+    display: block;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    background: #ddd;
+}
+
+/* إظهار القائمة عند النقر */
+.menu.active {
+    display: flex;
 }
