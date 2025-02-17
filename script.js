@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // توليد رقم تعريف خاص بالمستخدم إذا لم يكن موجودًا مسبقًا
+    // توليد رقم تعريف خاص للمستخدم إذا لم يكن موجودًا مسبقًا
     if (!localStorage.getItem("userId")) {
         localStorage.setItem("userId", Math.floor(100000 + Math.random() * 900000));
     }
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loadBlogs(); // تحميل مدونات المستخدم الحالي عند تشغيل الصفحة
 });
 
-// حفظ المدونة في Local Storage
+// حفظ المدونة في Local Storage بناءً على رقم التعريف الحالي
 function saveBlog() {
     let blogText = document.getElementById("blogInput").value.trim();
     if (blogText === "") return;
@@ -23,7 +23,7 @@ function saveBlog() {
     loadBlogs(); // تحديث القائمة
 }
 
-// تحميل مدونات المستخدم الحالي
+// تحميل المدونات الخاصة بالمستخدم الحالي
 function loadBlogs() {
     let userId = localStorage.getItem("userId");
     let blogs = JSON.parse(localStorage.getItem(`blogs_${userId}`)) || [];
@@ -39,7 +39,13 @@ function viewOtherUserBlogs() {
         return;
     }
 
-    let otherUserBlogs = JSON.parse(localStorage.getItem(`blogs_${otherUserId}`)) || [];
+    let otherUserBlogs = JSON.parse(localStorage.getItem(`blogs_${otherUserId}`)); // محاولة جلب المدونات
+
+    if (!otherUserBlogs) {
+        alert("لا توجد مدونات لهذا المستخدم!");
+        return;
+    }
+
     displayBlogs(otherUserBlogs, `📜 مدونات المستخدم ${otherUserId}:`, false);
 }
 
