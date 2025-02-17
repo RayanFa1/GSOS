@@ -1,64 +1,59 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // توليد رقم تعريف خاص بالمستخدم إذا لم يكن موجودًا مسبقًا
-    if (!localStorage.getItem("userId")) {
-        localStorage.setItem("userId", Math.floor(100000 + Math.random() * 900000));
-    }
-    document.getElementById("currentUserId").textContent = localStorage.getItem("userId");
-
-    loadBlogs(); // تحميل مدونات المستخدم الحالي عند تشغيل الصفحة
+    loadNotes(); // تحميل الملاحظات عند فتح الصفحة
 });
 
-// حفظ المدونة في Local Storage بناءً على رقم التعريف الحالي
-function saveBlog() {
-    let blogText = document.getElementById("blogInput").value.trim();
-    if (blogText === "") return;
+// حفظ الملاحظة في Local Storage
+function saveNote() {
+    let userId = document.getElementById("userIdInput").value.trim();
+    let noteText = document.getElementById("noteInput").value.trim();
 
-    let userId = localStorage.getItem("userId");
-    let userBlogs = JSON.parse(localStorage.getItem(`blogs_${userId}`)) || [];
-    userBlogs.push(blogText);
+    if (userId === "" || noteText === "") {
+        alert("يجب ملء جميع الحقول قبل الحفظ!");
+        return;
+    }
 
-    localStorage.setItem(`blogs_${userId}`, JSON.stringify(userBlogs));
+    let notes = JSON.parse(localStorage.getItem("notes")) || [];
+    notes.push({ userId, noteText });
 
-    document.getElementById("blogInput").value = ""; // مسح الحقل بعد الحفظ
-    loadBlogs(); // تحديث القائمة
+    localStorage.setItem("notes", JSON.stringify(notes));
+
+    document.getElementById("userIdInput").value = "";
+    document.getElementById("noteInput").value = ""; // مسح الحقول بعد الحفظ
+
+    loadNotes(); // تحديث القائمة
 }
 
-// تحميل المدونات الخاصة بالمستخدم الحالي فقط
-function loadBlogs() {
-    let userId = localStorage.getItem("userId");
-    let blogs = JSON.parse(localStorage.getItem(`blogs_${userId}`)) || [];
-    
-    let blogList = document.getElementById("blogList");
-    blogList.innerHTML = ""; // مسح القائمة قبل إعادة التحميل
+// تحميل الملاحظات وعرضها
+function loadNotes() {
+    let notes = JSON.parse(localStorage.getItem("notes")) || [];
+    let notesList = document.getElementById("notesList");
+    notesList.innerHTML = "";
 
-    if (blogs.length === 0) {
-        blogList.innerHTML = "<p>🚫 لا توجد مدونات متاحة.</p>";
+    if (notes.length === 0) {
+        notesList.innerHTML = "<p>🚫 لا توجد ملاحظات حتى الآن.</p>";
     } else {
-        blogs.forEach((blog, index) => {
+        notes.forEach((note, index) => {
             let li = document.createElement("li");
-            li.textContent = blog;
+            li.innerHTML = `<strong>🆔 المستخدم ${note.userId}:</strong> ${note.noteText}`;
 
-            // إضافة زر الحذف
+            // إضافة زر حذف
             let deleteBtn = document.createElement("button");
             deleteBtn.textContent = "🗑 حذف";
             deleteBtn.className = "delete-btn";
             deleteBtn.onclick = function () {
-                deleteBlog(index);
+                deleteNote(index);
             };
 
             li.appendChild(deleteBtn);
-            blogList.appendChild(li);
+            notesList.appendChild(li);
         });
     }
 }
 
-// حذف مدونة معينة للمستخدم الحالي
-function deleteBlog(index) {
-    let userId = localStorage.getItem("userId");
-    let blogs = JSON.parse(localStorage.getItem(`blogs_${userId}`)) || [];
-
-    blogs.splice(index, 1); // حذف العنصر من المصفوفة
-    localStorage.setItem(`blogs_${userId}`, JSON.stringify(blogs));
-
-    loadBlogs(); // إعادة تحميل المدونات
+// حذف ملاحظة معينة
+function deleteNote(index) {
+    let notes = JSON.parse(localStorage.getItem("notes")) || [];
+    notes.splice(index, 1); // حذف الملاحظة من المصفوفة
+    localStorage.setItem("notes", JSON.stringify(notes));
+    loadNotes(); // تحديث العرض
 }
