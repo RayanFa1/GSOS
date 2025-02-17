@@ -1,35 +1,30 @@
-/* ضبط الخلفية */
+/* ضبط الخلفية العامة */
 body {
     font-family: Arial, sans-serif;
     background-color: #0A1931; /* أزرق غامق */
-    color: white;
     text-align: center;
     margin: 0;
     padding: 20px;
+    color: white;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-}
-
+/* تنسيق الحاوية الرئيسية */
 .container {
     width: 90%;
     max-width: 500px;
-    background: white;
+    background: rgba(255, 255, 255, 0.1); /* لون شفاف لتباين جيد */
     padding: 20px;
     margin: 20px auto;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
-h1 {
-    color: #333;
+/* تنسيق العناوين */
+h1, h2 {
+    color: #FFD700; /* ذهبي */
 }
 
+/* تنسيق الحقول */
 .input-group {
     margin: 15px 0;
     text-align: left;
@@ -44,52 +39,59 @@ label {
 input, textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #FFD700; /* ذهبي */
     border-radius: 5px;
     font-size: 16px;
+    background: #1E3A5F; /* أزرق داكن فاتح */
+    color: white;
 }
 
+/* ضبط حجم مربع النص */
 textarea {
     height: 100px;
     resize: none;
 }
 
+/* زر الحفظ */
 button {
-    background: #007BFF;
-    color: white;
+    background: #FFD700; /* ذهبي */
+    color: black;
     border: none;
     padding: 10px 15px;
     font-size: 18px;
     cursor: pointer;
     border-radius: 5px;
     margin-top: 10px;
+    width: 100%;
+    font-weight: bold;
 }
 
 button:hover {
-    background: #0056b3;
+    background: #FFC107; /* ذهبي فاتح */
 }
 
-h2 {
-    color: #333;
-    margin-top: 20px;
-}
-
+/* قائمة الملاحظات */
 ul {
     list-style: none;
     padding: 0;
 }
 
+/* تنسيق عنصر الملاحظة */
 li {
-    background: #fff;
+    background: #1E3A5F; /* أزرق داكن فاتح */
     margin: 10px 0;
-    padding: 10px;
-    border-left: 5px solid #007BFF;
+    padding: 15px;
+    border-left: 5px solid #FFD700; /* ذهبي */
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
     text-align: left;
+    font-size: 16px;
+    line-height: 1.5;
+    color: white;
     position: relative;
 }
 
+/* زر الحذف داخل الملاحظة */
 .delete-btn {
     position: absolute;
     right: 10px;
@@ -105,187 +107,4 @@ li {
 
 .delete-btn:hover {
     background: darkred;
-}
-
-/* تنسيق الحاوية */
-.container {
-    max-width: 600px;
-    margin: auto;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 10px;
-}
-
-/* رقم المستخدم */
-.user-id {
-    font-size: 18px;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-
-/* تصميم زر الحذف */
-.delete-btn {
-    margin-left: 10px;
-    padding: 5px 10px;
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.delete-btn:hover {
-    background-color: darkred;
-}
-
-button {
-    margin-left: 10px;
-    padding: 5px 10px;
-    border: none;
-    background-color: red;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-button:hover {
-    background-color: darkred;
-}
-
-/* حقل إدخال المدونة */
-.blog-container {
-    margin: 20px 0;
-}
-
-textarea {
-    width: 100%;
-    height: 100px;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: none;
-    resize: none;
-    outline: none;
-}
-
-/* زر الحفظ */
-button {
-    margin-top: 10px;
-    padding: 10px 15px;
-    background-color: #FFD700;
-    border: none;
-    color: black;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-    width: 100%;
-}
-
-button:hover {
-    background-color: #FFC107;
-}
-
-/* تحسين حاوية عرض مدونات مستخدم آخر */
-.view-profile-container {
-    margin: 20px 0;
-    text-align: center;
-}
-
-.view-profile-container label {
-    font-size: 18px;
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.input-group {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.input-group input {
-    width: 200px;
-    padding: 8px;
-    border: 2px solid #007bff;
-    border-radius: 5px;
-    font-size: 16px;
-    text-align: center;
-}
-
-.input-group button {
-    padding: 8px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.input-group button:hover {
-    background-color: #0056b3;
-}
-
-/* قائمة المدونات */
-h2 {
-    margin-top: 30px;
-    font-size: 20px;
-}
-
-#blogList {
-    list-style: none;
-    padding: 0;
-}
-
-/* تحسين حاوية تسجيل الدخول */
-.login-container {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.login-container label {
-    font-size: 18px;
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.input-group {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.input-group input {
-    width: 200px;
-    padding: 8px;
-    border: 2px solid #007bff;
-    border-radius: 5px;
-    font-size: 16px;
-    text-align: center;
-}
-
-.input-group button {
-    padding: 8px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.input-group button:hover {
-    background-color: #0056b3;
-}
-
-#blogList li {
-    background: #1E3A5F;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
 }
