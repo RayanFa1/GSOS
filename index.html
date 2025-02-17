@@ -3,27 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GSOS</title>
+    <title>نظام الملاحظات العامة</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="container">
-        <!-- العنوان الرئيسي -->
-        <h1>General System of Self-Operation and Protection</h1>
+        <h1>📌 نظام الملاحظات العامة</h1>
 
-        <!-- رقم التعريف الخاص بالمستخدم -->
-        <p class="user-id">رقم التعريف الخاص بك: <span id="currentUserId"></span></p>
-
-        <!-- حقل إدخال المدونة -->
-        <div class="blog-container">
-            <textarea id="blogInput" placeholder="اكتب مدونتك هنا..."></textarea>
-            <button onclick="saveBlog()">حفظ المدونة</button>
+        <!-- إدخال رقم تعريف المستخدم -->
+        <div class="input-group">
+            <label for="userIdInput">الرجاء كتابة رقم تعريف المستخدم:</label>
+            <input type="number" id="userIdInput" placeholder="أدخل رقم التعريف..." required>
         </div>
 
-        <!-- قائمة المدونات المحفوظة -->
-        <h2>📜 مدوناتك المحفوظة:</h2>
-        <ul id="blogList"></ul>
+        <!-- إدخال الملاحظة -->
+        <div class="input-group">
+            <label for="noteInput">كتابة الملاحظة:</label>
+            <textarea id="noteInput" placeholder="اكتب ملاحظتك هنا..." required></textarea>
+        </div>
+
+        <!-- زر الحفظ -->
+        <button onclick="saveNote()">💾 حفظ الملاحظة</button>
+
+        <!-- عرض الملاحظات العامة -->
+        <h2>📃 الملاحظات العامة:</h2>
+        <ul id="notesList"></ul>
     </div>
 
     <script src="script.js"></script>
