@@ -62,7 +62,20 @@
         hamburger.addEventListener('click', function () {
             menu.classList.toggle('active');
         });
+<!-- زر الهامبرغر -->
+<div class="hamburger" id="hamburger">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
 
+<!-- قائمة الهامبرغر -->
+<nav class="menu" id="menu">
+    <a href="about.html">حول</a>
+</nav>
+
+<!-- رسالة النجاح -->
+<p id="success-message">تم إرسال الرسالة بنجاح</p>
         // إرسال الرسالة
         document.getElementById("message-form").addEventListener("submit", function(event) {
             event.preventDefault();
