@@ -43,7 +43,30 @@ header p {
 .main-content p {
     font-size: 20px;
 }
+.back-button-container {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
 
+.back-button {
+    background: linear-gradient(135deg, #8b5e3b, #c9a78b); /* تدرج لوني جذاب */
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.back-button:hover {
+    background: linear-gradient(135deg, #6d4229, #a97e5a);
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
 /* كلمة Made in Saudi في أسفل الصفحة */
 footer {
     position: fixed;
