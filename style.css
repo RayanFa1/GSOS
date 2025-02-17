@@ -7,30 +7,6 @@ body {
     text-align: center;
 }
 
-/* رأس الصفحة */
-header {
-    background: #8b5e3b; /* بني غامق */
-    color: white;
-    padding: 20px 0;
-}
-
-.header-content h1 {
-    margin: 0;
-    font-size: 24px;
-}
-
-/* رقم التعريف */
-.user-id-container {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    background: #f3f3f3;
-    padding: 10px;
-    border-radius: 8px;
-    display: inline-block;
-    margin-top: 20px;
-}
-
 /* زر الهامبرغر */
 .hamburger {
     position: absolute;
@@ -57,6 +33,7 @@ header {
     background: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
+    padding: 10px;
 }
 
 .menu a {
@@ -70,6 +47,23 @@ header {
     display: block;
 }
 
+/* الحاوية الرئيسية */
+.container {
+    margin-top: 100px;
+}
+
+/* رقم التعريف */
+.user-id {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
 /* نموذج إرسال الرسائل */
 .message-container {
     margin: 30px auto;
@@ -79,6 +73,7 @@ header {
     background: white;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
 }
 
 .message-container h2 {
@@ -93,17 +88,20 @@ header {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 16px;
 }
 
+/* زر الإرسال */
 .message-container button {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background: #8b5e3b;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
+    transition: 0.3s;
 }
 
 .message-container button:hover {
@@ -116,7 +114,11 @@ header {
 }
 
 #success-message {
-    color: green;
+    color: white;
+    background: green;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
     margin-top: 10px;
 }
 
