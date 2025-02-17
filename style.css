@@ -71,6 +71,49 @@ button:hover {
     background-color: #FFC107;
 }
 
+/* تحسين حاوية عرض مدونات مستخدم آخر */
+.view-profile-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.view-profile-container label {
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-group input {
+    width: 200px;
+    padding: 8px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.input-group button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.input-group button:hover {
+    background-color: #0056b3;
+}
+
 /* قائمة المدونات */
 h2 {
     margin-top: 30px;
