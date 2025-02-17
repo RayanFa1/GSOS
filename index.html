@@ -8,21 +8,23 @@
 </head>
 <body>
 
-    <!-- العنوان الرئيسي -->
-    <h1 class="title">General system of self-operation and protection</h1>
+    <div class="container">
+        <!-- العنوان الرئيسي -->
+        <h1>General system of self-operation and protection</h1>
 
-    <!-- رقم التعريف الخاص بالمستخدم -->
-    <p class="user-id">رقم التعريف الخاص بك: <span id="userId"></span></p>
+        <!-- رقم التعريف الخاص بالمستخدم -->
+        <p class="user-id">رقم التعريف الخاص بك: <span id="userId"></span></p>
 
-    <!-- قسم تسجيل المدونة -->
-    <div class="blog-container">
-        <textarea id="blogInput" placeholder="اكتب مدونتك هنا..."></textarea>
-        <button onclick="saveBlog()">حفظ المدونة</button>
+        <!-- حقل إدخال المدونة -->
+        <div class="blog-container">
+            <textarea id="blogInput" placeholder="اكتب مدونتك هنا..."></textarea>
+            <button onclick="saveBlog()">حفظ المدونة</button>
+        </div>
+
+        <!-- قائمة المدونات المحفوظة -->
+        <h2>مدوناتك المحفوظة:</h2>
+        <ul id="blogList"></ul>
     </div>
-
-    <!-- قائمة المدونات المحفوظة -->
-    <h2 class="subtitle">مدوناتك المحفوظة:</h2>
-    <ul id="blogList"></ul>
 
     <script src="script.js"></script>
 </body>
