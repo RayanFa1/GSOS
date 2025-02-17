@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GSOS - نظام المدونات</title>
+    <title>GSOS</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,19 +15,16 @@
         <!-- رقم التعريف الخاص بالمستخدم -->
         <p class="user-id">رقم التعريف الخاص بك: <span id="currentUserId"></span></p>
 
-        <!-- حقل إدخال رقم تعريف آخر لعرض مدوناته -->
-        <div class="view-profile-container">
-            <label for="otherUserIdInput">👀 أدخل رقم تعريف مستخدم آخر لعرض مدوناته:</label>
-            <div class="input-group">
-                <input type="number" id="otherUserIdInput" placeholder="مثال: 123456">
-                <button onclick="viewOtherUserBlogs()">عرض المدونات</button>
-            </div>
-        </div>
-
-        <!-- حقل إدخال المدونة للمستخدم الحالي -->
+        <!-- حقل إدخال المدونة -->
         <div class="blog-container">
             <textarea id="blogInput" placeholder="اكتب مدونتك هنا..."></textarea>
             <button onclick="saveBlog()">حفظ المدونة</button>
+        </div>
+
+        <!-- البحث عن مدونات مستخدم آخر -->
+        <div class="search-container">
+            <input type="number" id="otherUserIdInput" placeholder="أدخل رقم تعريف مستخدم آخر">
+            <button onclick="viewOtherUserBlogs()">عرض المدونات</button>
         </div>
 
         <!-- قائمة المدونات المحفوظة -->
